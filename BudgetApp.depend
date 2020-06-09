@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1590675091 source:c:\praca\programy\budgetapp\user.cpp
+	"User.h"
+
+1591704497 c:\praca\programy\budgetapp\user.h
+	<iostream>
+	<vector>
+
+1591707764 source:c:\praca\programy\budgetapp\xmlfilewithusers.cpp
+	"XMLFileWithUsers.h"
+	"UserManager.h"
+	"Markup.h"
+	"User.h"
+	<iostream>
+	<vector>
+
+1589485079 source:c:\praca\programy\budgetapp\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1589485079 c:\praca\programy\budgetapp\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1591289744 source:c:\praca\programy\budgetapp\auxiliarymethods.cpp
+	"AuxiliaryMethods.h"
+	"UserManager.h"
+
+1591289719 c:\praca\programy\budgetapp\auxiliarymethods.h
+	<iostream>
+	<sstream>
+	<vector>
+	<algorithm>
+	"User.h"
+
+1591121591 c:\praca\programy\budgetapp\usermanager.h
+	<iostream>
+	<vector>
+	<windows.h>
+	<fstream>
+	<sstream>
+	"User.h"
+	"XMLFileWithUsers.h"
+
+1591293737 c:\praca\programy\budgetapp\xmlfilewithusers.h
+	<iostream>
+	<vector>
+	<fstream>
+	<cstdlib>
+	"User.h"
+	"AuxiliaryMethods.h"
+
+1591293223 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+	"PersonalBudgetManager.h"
+	"UserManager.h"
+
+1591121637 c:\praca\programy\budgetapp\personalbudgetmanager.h
+	<iostream>
+	"UserManager.h"
+
+1591705126 source:c:\praca\programy\budgetapp\main.cpp
+	<iostream>
+	"PersonalBudgetManager.h"
+
+1591706622 source:c:\praca\programy\budgetapp\usermanager.cpp
+	"UserManager.h"
+	"XMLFileWithUsers.h"
+
