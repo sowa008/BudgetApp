@@ -48,10 +48,10 @@ int main()
             switch (choice)
             {
             case '1':
-                //personalBudgetManager.addMoneyRecord();
+                personalBudgetManager.addIncome();
                 break;
               case '2':
-                 // personalBudgetManager.searchMoneyRecordFromCurrentMonth();
+                personalBudgetManager.addExpanse();
                   break;
               case '3':
                  // personalBudgetManager.searchMoneyRecordFromPreviousMonth();

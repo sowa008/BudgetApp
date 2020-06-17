@@ -57,6 +57,16 @@ string AuxiliaryMethods :: getUsersFileName()
     return "users.xml";
 }
 
+string AuxiliaryMethods :: getIncomesFileName()
+{
+    return "incomes.xml";
+}
+
+string AuxiliaryMethods :: getExpansesFileName()
+{
+    return "expanses.xml";
+}
+
 string AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToSmall(string text)
 {
     if (!text.empty())

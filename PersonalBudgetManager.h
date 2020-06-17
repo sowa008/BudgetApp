@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "UserManager.h"
+#include "IncomeManager.h"
+#include "ExpanseManager.h"
+#include "XMLFileWithMoneyRecords.h"
 
 using namespace std;
 
@@ -10,8 +13,12 @@ class PersonalBudgetManager
 {
    // const string USERS_FILE_NAME;
     //AdresatManager *adresatManager;
+    float income, expanse;
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
+    IncomeManager incomeManager;
+    ExpanseManager expanseManager;
+    XMLFileWithMoneyRecords xmlFileWithMoneyRecords;
 
 public:
 
@@ -35,6 +42,12 @@ public:
    // void wyszukajAdresatowPoNazwisku();
    // void edytujAdresata();
 
+
+    //float askAboutIncome();
+    //float askAboutExpanse();
+
+    void addIncome();
+    void addExpanse();
     void registerUser();
     void logInUser();
     void logOutUser();

@@ -6,6 +6,23 @@
 //    adresatManager->dodajAdresata();
 //}
 
+void PersonalBudgetManager :: addIncome()
+{
+    //adresatManager->dodajAdresata();
+    //income=incomeManager.askAboutIncome();
+    //incomeManager.addMoneyRecord(income);
+    xmlFileWithMoneyRecords.addMoneyRecordToXMLFile(AuxiliaryMethods :: getIncomesFileName()); //made for incomes only
+    cout << "You have added an income" << endl;
+    system("pause");
+}
+
+void PersonalBudgetManager :: addExpanse()
+{
+    //adresatManager->dodajAdresata();
+    expanse=expanseManager.askAboutExpanse();
+    expanseManager.addMoneyRecord(expanse);
+}
+
 void PersonalBudgetManager :: registerUser()
 {
     userManager.registerUser();

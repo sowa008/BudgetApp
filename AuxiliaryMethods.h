@@ -20,6 +20,8 @@ public:
         static char getCharacter();
         static string getLine();
         static string getUsersFileName();
+        static string getIncomesFileName();
+        static string getExpansesFileName();
         static string changeFirstLetterToCapitalAndOtherToSmall(string text);
 
 };

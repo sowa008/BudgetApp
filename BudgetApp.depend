@@ -6,7 +6,7 @@
 	<iostream>
 	<vector>
 
-1591707764 source:c:\praca\programy\budgetapp\xmlfilewithusers.cpp
+1591708051 source:c:\praca\programy\budgetapp\xmlfilewithusers.cpp
 	"XMLFileWithUsers.h"
 	"UserManager.h"
 	"Markup.h"
@@ -28,11 +28,11 @@
 	<string>
 	<afx.h>
 
-1591289744 source:c:\praca\programy\budgetapp\auxiliarymethods.cpp
+1592323096 source:c:\praca\programy\budgetapp\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
 	"UserManager.h"
 
-1591289719 c:\praca\programy\budgetapp\auxiliarymethods.h
+1592323132 c:\praca\programy\budgetapp\auxiliarymethods.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -56,19 +56,91 @@
 	"User.h"
 	"AuxiliaryMethods.h"
 
-1591293223 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+1592337542 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
 	"PersonalBudgetManager.h"
 	"UserManager.h"
 
-1591121637 c:\praca\programy\budgetapp\personalbudgetmanager.h
+1592337340 c:\praca\programy\budgetapp\personalbudgetmanager.h
 	<iostream>
 	"UserManager.h"
+	"IncomeManager.h"
+	"ExpanseManager.h"
+	"XMLFileWithMoneyRecords.h"
 
-1591705126 source:c:\praca\programy\budgetapp\main.cpp
+1592324877 source:c:\praca\programy\budgetapp\main.cpp
 	<iostream>
 	"PersonalBudgetManager.h"
 
 1591706622 source:c:\praca\programy\budgetapp\usermanager.cpp
 	"UserManager.h"
 	"XMLFileWithUsers.h"
+
+1592336798 c:\praca\programy\budgetapp\moneyrecordmanager.h
+	<iostream>
+	"MoneyRecord.h"
+
+1592393059 source:c:\praca\programy\budgetapp\moneyrecordmanager.cpp
+	"MoneyRecordManager.h"
+	"MoneyRecord.h"
+	"AuxiliaryMethods.h"
+	"DateManager.h"
+
+1591713773 source:c:\praca\programy\budgetapp\income.cpp
+	"Income.h"
+
+1591713319 c:\praca\programy\budgetapp\income.h
+	<iostream>
+	<vector>
+
+1592324749 source:c:\praca\programy\budgetapp\incomemanager.cpp
+	"IncomeManager.h"
+	"AuxiliaryMethods.h"
+
+1592324931 c:\praca\programy\budgetapp\incomemanager.h
+	"MoneyRecordManager.h"
+	<iostream>
+
+1592336940 source:c:\praca\programy\budgetapp\xmlfilewithmoneyrecords.cpp
+	"XMLFileWithMoneyRecords.h"
+	"MoneyRecordManager.h"
+	"Markup.h"
+	"MoneyRecord.h"
+	<iostream>
+	<vector>
+
+1592329248 source:c:\praca\programy\budgetapp\moneyrecord.cpp
+	"MoneyRecord.h"
+
+1592324732 source:c:\praca\programy\budgetapp\expansemanager.cpp
+	"ExpanseManager.h"
+	"AuxiliaryMethods.h"
+
+1592324931 c:\praca\programy\budgetapp\expansemanager.h
+	"MoneyRecordManager.h"
+	<iostream>
+
+1592329248 c:\praca\programy\budgetapp\moneyrecord.h
+	<iostream>
+	<vector>
+
+1592330897 c:\praca\programy\budgetapp\xmlfilewithmoneyrecords.h
+	<iostream>
+	<vector>
+	<fstream>
+	<cstdlib>
+	"MoneyRecord.h"
+	"AuxiliaryMethods.h"
+
+1592393347 c:\praca\programy\budgetapp\datemanager.h
+	<iostream>
+	<sstream>
+	<vector>
+	<algorithm>
+	"MoneyRecord.h"
+	<string>
+	<windows.h>
+	<winbase.h>
+
+1592393310 source:c:\praca\programy\budgetapp\datemanager.cpp
+	"DateManager.h"
 

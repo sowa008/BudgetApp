@@ -34,8 +34,12 @@
 		</Compiler>
 		<Unit filename="AuxiliaryMethods.cpp" />
 		<Unit filename="AuxiliaryMethods.h" />
+		<Unit filename="Income.cpp" />
+		<Unit filename="Income.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
+		<Unit filename="MoneyRecordManager.cpp" />
+		<Unit filename="MoneyRecordManager.h" />
 		<Unit filename="PersonalBudgetManager.cpp" />
 		<Unit filename="PersonalBudgetManager.h" />
 		<Unit filename="User.cpp" />
@@ -45,7 +49,6 @@
 		<Unit filename="XMLFileWithUsers.cpp" />
 		<Unit filename="XMLFileWithUsers.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="users.xml" />
 		<Extensions>
 			<code_completion />
 			<envvars />
