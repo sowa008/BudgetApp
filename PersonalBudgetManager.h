@@ -11,9 +11,11 @@ using namespace std;
 
 class PersonalBudgetManager
 {
-   // const string USERS_FILE_NAME;
-    //AdresatManager *adresatManager;
+
     float income, expanse;
+
+   // const string USERS_FILE_NAME;
+    MoneyRecordManager *moneyRecordManager;
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
     IncomeManager incomeManager;
@@ -24,16 +26,18 @@ public:
 
    /* KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami, string nazwaPlikuTymczasowego)
     : uzytkownikManager(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami), NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI (nazwaPlikuTymczasowego)
+    */
+    PersonalBudgetManager()
     {
-    adresatManager=NULL;
+    moneyRecordManager=NULL;
     };
 
-    ~KsiazkaAdresowa()
+    ~PersonalBudgetManager()
     {
-    delete adresatManager;
-    adresatManager=NULL;
+    delete moneyRecordManager;
+    moneyRecordManager=NULL;
     }
-*/
+
   //  void dodajAdresata();
   //  void usunAdresata();
    // int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata);

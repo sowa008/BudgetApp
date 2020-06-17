@@ -2,11 +2,13 @@
 #define MONEYRECORDMANAGER_H
 #include <iostream>
 #include "MoneyRecord.h"
+#include "XMLFileWithMoneyRecords.h"
 
 using namespace std;
 
 class MoneyRecordManager
 {
+    XMLFileWithMoneyRecords xmlFileWithMoneyRecords;
     vector <MoneyRecord> moneyRecords;
 
 public:
@@ -14,7 +16,7 @@ public:
     int getIdOfNewMoneyRecord();
     int getIdOfTheLoggedUser();
     MoneyRecord askDataOfNewMoneyRecord();
-    void addMoneyRecord(float moneyRecord);
+    void addMoneyRecord(string fileName);
 
 };
 

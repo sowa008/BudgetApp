@@ -18,7 +18,7 @@ void XMLFileWithMoneyRecords :: addMoneyRecordToXMLFile(string fileName) //made 
 
     MoneyRecordManager moneyRecordManager;
 
-    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewMoneyRecord(); //nie ma jeszcze tej funkcji
+    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewMoneyRecord();
 
     file.open(fileName.c_str(), ios::out | ios::app);
 
