@@ -24,9 +24,8 @@ MoneyRecord MoneyRecordManager :: askDataOfNewMoneyRecord()
 {
     MoneyRecord newMoneyRecord;
 
-    newMoneyRecord.setMoneyRecordId(getIdOfNewMoneyRecord()); //nie ma tej funkcji
-
-    newMoneyRecord.setUserId(getIdOfTheLoggedUser()); //I have to work on it later
+    newMoneyRecord.setMoneyRecordId(getIdOfNewMoneyRecord());
+    newMoneyRecord.setUserId(getIdOfTheLoggedUser());
 
     int date;
     string item;
@@ -50,20 +49,35 @@ MoneyRecord MoneyRecordManager :: askDataOfNewMoneyRecord()
 
         newMoneyRecord.setDate(date);
 
-    cout << "Eenter item of this record: ";
-    cin >> item; //lepiej getlinem, ale nie dziala
-    newMoneyRecord.setItem(item);
-
     cout << "What is the amount? : ";
     cin >> amount;
     newMoneyRecord.setAmount(amount);
 
+    cout << "Enter comment to this record (source/item): ";
+    cin >> item; //lepiej getlinem, ale nie dziala
+    newMoneyRecord.setItem(item);
+
     return newMoneyRecord;
 }
 
-void MoneyRecordManager :: addMoneyRecord(string fileName)
+/*void MoneyRecordManager :: addMoneyRecord(string fileName)
 {
     xmlFileWithMoneyRecords.addMoneyRecordToXMLFile(fileName);
     cout << "You have added a record" << endl;
     system("pause");
+} */
+
+void MoneyRecordManager :: addIncome(string fileName)
+{
+    xmlFileWithMoneyRecordsIncome.addMoneyRecordToXMLFile(fileName);
+    cout << "You have added an income" << endl;
+    system("pause");
 }
+
+void MoneyRecordManager :: addExpanse(string fileName)
+{
+    xmlFileWithMoneyRecordsExpanse.addMoneyRecordToXMLFile(fileName);
+    cout << "You have added an expanse" << endl;
+    system("pause");
+}
+

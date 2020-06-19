@@ -18,9 +18,9 @@ class PersonalBudgetManager
     MoneyRecordManager *moneyRecordManager;
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
-    IncomeManager incomeManager;
-    ExpanseManager expanseManager;
-    XMLFileWithMoneyRecords xmlFileWithMoneyRecords;
+    //IncomeManager incomeManager;
+    //ExpanseManager expanseManager;
+    //XMLFileWithMoneyRecords xmlFileWithMoneyRecords;
 
 public:
 

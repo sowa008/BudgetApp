@@ -9,7 +9,8 @@ class ExpanseManager : public MoneyRecordManager
 {
 
 public:
-float askAboutExpanse();
+    int getIdOfNewExpanse();
+    MoneyRecord askDataOfNewExpanse();
 
 };
 

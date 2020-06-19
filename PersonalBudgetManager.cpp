@@ -1,22 +1,14 @@
 #include "PersonalBudgetManager.h"
 #include "UserManager.h"
 
-//void PersonalBudgetManager :: dodajAdresata()
-//{
-//    adresatManager->dodajAdresata();
-//}
-
 void PersonalBudgetManager :: addIncome()
 {
-    moneyRecordManager->addMoneyRecord(AuxiliaryMethods :: getIncomesFileName());
-    //income=incomeManager.askAboutIncome();
-    //incomeManager.addMoneyRecord(income);
-    //xmlFileWithMoneyRecords.addMoneyRecordToXMLFile(AuxiliaryMethods :: getIncomesFileName()); //made for incomes only
+    moneyRecordManager->addIncome(AuxiliaryMethods :: getIncomesFileName());
 }
 
 void PersonalBudgetManager :: addExpanse()
 {
-    moneyRecordManager->addMoneyRecord(AuxiliaryMethods :: getExpansesFileName());
+    moneyRecordManager->addExpanse(AuxiliaryMethods :: getExpansesFileName());
 }
 
 void PersonalBudgetManager :: registerUser()
@@ -27,10 +19,12 @@ void PersonalBudgetManager :: registerUser()
 void PersonalBudgetManager :: logInUser()
 {
     userManager.logInUser();
-    //if (userManager.isUserLoggedIn())
-    //{
+    if (userManager.isUserLoggedIn())
+    {
+        moneyRecordManager = new MoneyRecordManager (userManager.getIdOfLoggedUser());
+        // (userManager.getIdOfLoggedUser());
     //    adresatManager = new AdresatManager(NAZWA_PLIKU_Z_ADRESATAMI, NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
-    //}
+    }
 }
 
 void PersonalBudgetManager :: logOutUser()
