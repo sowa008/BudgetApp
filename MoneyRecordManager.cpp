@@ -1,8 +1,4 @@
 #include "MoneyRecordManager.h"
-#include "MoneyRecord.h"
-#include "AuxiliaryMethods.h"
-#include "DateManager.h"
-#include "XMLFileWithMoneyRecords.h"
 
 int MoneyRecordManager :: getIdOfNewMoneyRecord()
 {
@@ -40,7 +36,7 @@ MoneyRecord MoneyRecordManager :: askDataOfNewMoneyRecord()
         if (answer == "Y" || answer == "y")
         {
             DateManager :: showTodayDate();
-            date = DateManager :: turnDateToInt();
+            date = DateManager :: turnTodayDateToInt();
         }
         else
         {
@@ -54,18 +50,13 @@ MoneyRecord MoneyRecordManager :: askDataOfNewMoneyRecord()
     newMoneyRecord.setAmount(amount);
 
     cout << "Enter comment to this record (source/item): ";
-    cin >> item; //lepiej getlinem, ale nie dziala
+    //cin >> item; //lepiej getlinem, ale nie dziala
+    cin.ignore();
+    item = AuxiliaryMethods :: getLine();
     newMoneyRecord.setItem(item);
 
     return newMoneyRecord;
 }
-
-/*void MoneyRecordManager :: addMoneyRecord(string fileName)
-{
-    xmlFileWithMoneyRecords.addMoneyRecordToXMLFile(fileName);
-    cout << "You have added a record" << endl;
-    system("pause");
-} */
 
 void MoneyRecordManager :: addIncome(string fileName)
 {

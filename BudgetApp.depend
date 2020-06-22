@@ -28,16 +28,16 @@
 	<string>
 	<afx.h>
 
-1592323096 source:c:\praca\programy\budgetapp\auxiliarymethods.cpp
+1592824234 source:c:\praca\programy\budgetapp\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
-	"UserManager.h"
 
-1592323132 c:\praca\programy\budgetapp\auxiliarymethods.h
+1592824563 c:\praca\programy\budgetapp\auxiliarymethods.h
 	<iostream>
 	<sstream>
+	<fstream>
 	<vector>
 	<algorithm>
-	"User.h"
+	<windows.h>
 
 1591121591 c:\praca\programy\budgetapp\usermanager.h
 	<iostream>
@@ -67,7 +67,7 @@
 	"ExpanseManager.h"
 	"XMLFileWithMoneyRecords.h"
 
-1592324877 source:c:\praca\programy\budgetapp\main.cpp
+1592847134 source:c:\praca\programy\budgetapp\main.cpp
 	<iostream>
 	"PersonalBudgetManager.h"
 
@@ -75,12 +75,14 @@
 	"UserManager.h"
 	"XMLFileWithUsers.h"
 
-1592570041 c:\praca\programy\budgetapp\moneyrecordmanager.h
+1592854563 c:\praca\programy\budgetapp\moneyrecordmanager.h
 	<iostream>
 	"MoneyRecord.h"
 	"XMLFileWithMoneyRecords.h"
+	"AuxiliaryMethods.h"
+	"DateManager.h"
 
-1592570455 source:c:\praca\programy\budgetapp\moneyrecordmanager.cpp
+1592848349 source:c:\praca\programy\budgetapp\moneyrecordmanager.cpp
 	"MoneyRecordManager.h"
 	"MoneyRecord.h"
 	"AuxiliaryMethods.h"
@@ -102,7 +104,7 @@
 	"MoneyRecordManager.h"
 	<iostream>
 
-1592570455 source:c:\praca\programy\budgetapp\xmlfilewithmoneyrecords.cpp
+1592850791 source:c:\praca\programy\budgetapp\xmlfilewithmoneyrecords.cpp
 	"XMLFileWithMoneyRecords.h"
 	"MoneyRecordManager.h"
 	"Markup.h"
@@ -111,7 +113,7 @@
 	<iostream>
 	<vector>
 
-1592329248 source:c:\praca\programy\budgetapp\moneyrecord.cpp
+1592850581 source:c:\praca\programy\budgetapp\moneyrecord.cpp
 	"MoneyRecord.h"
 
 1592324732 source:c:\praca\programy\budgetapp\expansemanager.cpp
@@ -122,7 +124,7 @@
 	"MoneyRecordManager.h"
 	<iostream>
 
-1592329248 c:\praca\programy\budgetapp\moneyrecord.h
+1592851894 c:\praca\programy\budgetapp\moneyrecord.h
 	<iostream>
 	<vector>
 
@@ -134,7 +136,8 @@
 	"MoneyRecord.h"
 	"AuxiliaryMethods.h"
 
-1592393347 c:\praca\programy\budgetapp\datemanager.h
+1592846901 c:\praca\programy\budgetapp\datemanager.h
+	"AuxiliaryMethods.h"
 	<iostream>
 	<sstream>
 	<vector>
@@ -144,6 +147,6 @@
 	<windows.h>
 	<winbase.h>
 
-1592393310 source:c:\praca\programy\budgetapp\datemanager.cpp
+1592848910 source:c:\praca\programy\budgetapp\datemanager.cpp
 	"DateManager.h"
 

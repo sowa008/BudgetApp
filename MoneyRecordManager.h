@@ -3,6 +3,8 @@
 #include <iostream>
 #include "MoneyRecord.h"
 #include "XMLFileWithMoneyRecords.h"
+#include "AuxiliaryMethods.h"
+#include "DateManager.h"
 
 using namespace std;
 
@@ -23,6 +25,7 @@ public:
     }
 
     int getIdOfNewMoneyRecord();
+
     int getIdOfTheLoggedUser();
     MoneyRecord askDataOfNewMoneyRecord();
     //void addMoneyRecord(string fileName);

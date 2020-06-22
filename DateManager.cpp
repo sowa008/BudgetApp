@@ -5,30 +5,40 @@ void DateManager :: showTodayDate()
     SYSTEMTIME st;
     GetSystemTime(&st);
     cout << "Today is: " << st.wYear << "-" << st.wMonth << "-" << st.wDay << endl;
-
-    //return date;
 }
 
-int DateManager :: turnDateToInt()
+int DateManager :: turnTodayDateToInt()
 {
     SYSTEMTIME st;
     GetSystemTime(&st);
     int year = st.wYear;
     int month = st.wMonth;
     int day = st.wDay;
+    int date = turnDateToInt(year,month,day);
+    return date;
+}
+
+int DateManager :: turnDateToInt(int year, int month, int day)
+{
     int date = year*10000 + month*100 + day;
     return date;
 }
 
-string DateManager :: askTheDateAndCheckTheFormat()
+string DateManager :: askDate()
 {
     string date;
-    while (1)
+    cout << endl;
+    cout << "Give your date here (rrrr-mm-dd): ";
+    cin >> date;
+    cout << endl;
+    return date;
+}
+
+string DateManager :: checkFormat(string date)
+{
+    while (true)
     {
-        cout << endl;
-        cout << "Give your date here (rrrr-mm-dd): ";
-        cin >> date;
-        cout << endl;
+        date = askDate();
 
         if ((date.size()==10) && (date[4]=='-') && (date[7]=='-'))
         {
@@ -53,8 +63,7 @@ int DateManager :: returnDay(string date)
         day=day+date[i];
     }
 
-    int dayInt = atoi(day.c_str());
-
+    int dayInt = AuxiliaryMethods :: convertStringToInt(day);
     return dayInt;
 }
 
@@ -67,8 +76,7 @@ int DateManager :: returnMonth(string date)
         month=month+date[i];
     }
 
-    int monthInt = atoi(month.c_str());
-
+    int monthInt = AuxiliaryMethods :: convertStringToInt(month);
     return monthInt;
 }
 
@@ -81,8 +89,7 @@ int DateManager :: returnYear(string date)
         year=year+date[i];
     }
 
-    int yearInt = atoi(year.c_str());
-
+    int yearInt = AuxiliaryMethods :: convertStringToInt(year);
     return yearInt;
 }
 
@@ -90,7 +97,7 @@ bool DateManager :: validateYear(int year, int month, int day)
 {
     SYSTEMTIME st;
     GetSystemTime(&st);
-    if (year<st.wYear)
+    if ((year<st.wYear) && (year>=2000))
     {
         return true;
     }
@@ -156,29 +163,18 @@ int DateManager :: validateDate()
     string date;
     int day, month, year;
 
-    while (1)
+    while (true)
     {
-        date=askTheDateAndCheckTheFormat();
+        date=checkFormat(date);
         day=returnDay(date);
         month=returnMonth(date);
         year=returnYear(date);
 
         bool goodYear=validateYear(year,month,day);
-        if (goodYear == false)
-        {
-            cout << "This is a future date. You cannot submit neither your income nor your expanse with this date. Try again." << endl;
-            continue;
-        }
-
         bool goodMonth=validateMonth(month);
-        if (goodMonth == false)
-        {
-            cout << "This is not a correct date! Try again." << endl;
-            continue;
-        }
-
         bool goodDay=validateDay(day,month,year);
-        if (goodDay == false)
+
+        if ((goodYear == false) || (goodMonth == false) || (goodDay == false))
         {
             cout << "This is not a correct date! Try again." << endl;
             continue;
@@ -187,11 +183,36 @@ int DateManager :: validateDate()
             break;
     }
 
-    cout << "The date you gave, " << year << "-" << month << "-" << day << ", is correct." << endl;
+    cout << "The date is correct." << endl;
 
     cout << endl;
 
-    int intdate = year*10000 + month*100 + day;
+    int intdate = turnDateToInt(year,month,day);
 
     return intdate;
+}
+
+string DateManager :: turnDateToStringWithHyphens(int date)
+{
+    string stringDate = AuxiliaryMethods :: convertIntToString(date);
+    string stringYear="", stringMonth="", stringDay="";
+
+    for (int i=0; i<=3; i++)
+    {
+        stringYear=stringYear+stringDate[i];
+    }
+
+    for (int i=4; i<=5; i++)
+    {
+        stringMonth=stringMonth+stringDate[i];
+    }
+
+    for (int i=6; i<=7; i++)
+    {
+        stringDay=stringDay+stringDate[i];
+    }
+
+    string stringDateWithHyphens = stringYear + "-" + stringMonth + "-" + stringDay;
+
+    return stringDateWithHyphens;
 }

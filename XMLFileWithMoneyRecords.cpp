@@ -10,11 +10,11 @@ void XMLFileWithMoneyRecordsExpanse :: addMoneyRecordToXMLFile(string fileName) 
 {
     fstream file;
     int lastMoneyRecordId = 0;
-    int moneyRecordId=0;
-    int userId=0;
-    int date=0;
+//    int moneyRecordId=0;
+//    int userId=0;
+//    int date=0;
     string item="";
-    float amount=0;
+//    float amount=0;
 
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
 
@@ -120,11 +120,11 @@ vector <MoneyRecord> XMLFileWithMoneyRecordsExpanse :: getAllMoneyRecords(string
 void XMLFileWithMoneyRecordsExpanse :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord)
 {
     fstream file;
-    int moneyRecordId;
-    int userId;
-    int date;
+//    int moneyRecordId;
+//    int userId;
+//    int date;
     string item;
-    float amount;
+//    float amount;
 
     vector <MoneyRecord> allMoneyRecords;
     CMarkup xml;
@@ -149,7 +149,7 @@ void XMLFileWithMoneyRecordsExpanse :: readMoneyRecordsFromXMLFile(MoneyRecord n
 
     file.close();
 
-    for (int i=0; i<allMoneyRecords.size(); i++)
+    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
     {
         cout << allMoneyRecords[i].moneyRecordId << endl;
         cout << allMoneyRecords[i].userId << endl;
@@ -164,11 +164,11 @@ void XMLFileWithMoneyRecordsExpanse :: saveAllMoneyRecordsToXMLFile(vector<Money
 {
     fstream file;
 
-    int moneyRecordId=0;
-    int userId=0;
-    int date=0;
+//    int moneyRecordId=0;
+//    int userId=0;
+//    int date=0;
     string item="";
-    float amount=0;
+//    float amount=0;
 
     file.open(AuxiliaryMethods::getIncomesFileName(), ios::out);
 
@@ -177,7 +177,7 @@ void XMLFileWithMoneyRecordsExpanse :: saveAllMoneyRecordsToXMLFile(vector<Money
     xml.AddElem("expanses");
     xml.IntoElem();
 
-    for (int i=0; i<allMoneyRecords.size(); i++)
+    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
     {
         xml.AddElem( "expanse" );
         xml.IntoElem();
@@ -202,11 +202,11 @@ void XMLFileWithMoneyRecordsIncome :: addMoneyRecordToXMLFile(string fileName) /
 {
     fstream file;
     int lastMoneyRecordId = 0;
-    int moneyRecordId=0;
-    int userId=0;
-    int date=0;
+//    int moneyRecordId=0;
+//    int userId=0;
+//    int date=0;
     string source="";
-    float amount=0;
+//    float amount=0;
 
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
 
@@ -312,11 +312,11 @@ vector <MoneyRecord> XMLFileWithMoneyRecordsIncome :: getAllMoneyRecords(string 
 void XMLFileWithMoneyRecordsIncome :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord) //only incomes
 {
     fstream file;
-    int moneyRecordId;
-    int userId;
-    int date;
+//    int moneyRecordId;
+//    int userId;
+//    int date;
     string source;
-    float amount;
+//    float amount;
 
     vector <MoneyRecord> allMoneyRecords;
     CMarkup xml;
@@ -341,7 +341,7 @@ void XMLFileWithMoneyRecordsIncome :: readMoneyRecordsFromXMLFile(MoneyRecord ne
 
     file.close();
 
-    for (int i=0; i<allMoneyRecords.size(); i++)
+    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
     {
         cout << allMoneyRecords[i].moneyRecordId << endl;
         cout << allMoneyRecords[i].userId << endl;
@@ -356,11 +356,11 @@ void XMLFileWithMoneyRecordsIncome :: saveAllMoneyRecordsToXMLFile(vector<MoneyR
 {
     fstream file;
 
-    int moneyRecordId=0;
-    int userId=0;
-    int date=0;
+//    int moneyRecordId=0;
+//    int userId=0;
+//    int date=0;
     string source="";
-    float amount=0;
+//    float amount=0;
 
     file.open(AuxiliaryMethods::getIncomesFileName(), ios::out);
 
@@ -369,7 +369,7 @@ void XMLFileWithMoneyRecordsIncome :: saveAllMoneyRecordsToXMLFile(vector<MoneyR
     xml.AddElem("incomes");
     xml.IntoElem();
 
-    for (int i=0; i<allMoneyRecords.size(); i++)
+    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
     {
         xml.AddElem( "income" );
         xml.IntoElem();

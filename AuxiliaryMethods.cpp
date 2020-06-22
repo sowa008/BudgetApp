@@ -1,5 +1,4 @@
 #include "AuxiliaryMethods.h"
-#include "UserManager.h"
 
 bool AuxiliaryMethods :: isThisFileEmpty(fstream &file)
 {
