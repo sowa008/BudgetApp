@@ -7,26 +7,30 @@
 #include <cstdlib>
 
 #include "MoneyRecord.h"
+#include "MoneyRecordManager.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
 class XMLFileWithIncomes
 {
-
-int idOfTheLoggedUser;
-MoneyRecord newMoneyRecord;
+    int idOfTheLoggedUser;
+    string fileName;
+    vector <MoneyRecord> allIncomes;
 
 public:
-    XMLFileWithIncomes(int IdOfTheLoggedUser)
+    XMLFileWithIncomes(int IdOfTheLoggedUser, string FileName)
     {
         idOfTheLoggedUser = IdOfTheLoggedUser;
+        fileName = FileName;
     }
-    void addIncome(string fileName);
-    void addIncomeToXMLFile(string fileName);
-    vector <MoneyRecord> getAllMoneyRecords(string fileName);
-    void readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord);
-    void saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords);
+
+    void addIncome();
+    int getIdOfTheLastIncome();
+    void addIncomeToXMLFile();
+    vector <MoneyRecord> getAllIncomes();
+    void readAllIncomesFromXMLFile();
+    void readIncomesOfTheLoggedUserFromXMLFile();
 };
 
 #endif

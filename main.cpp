@@ -53,10 +53,10 @@ int main()
                 personalBudgetManager.addIncome();
                 break;
               case '2':
-                personalBudgetManager.addExpanse();
+                //personalBudgetManager.addExpanse();
                   break;
               case '3':
-                 // personalBudgetManager.searchMoneyRecordFromPreviousMonth();
+                 personalBudgetManager.showTheBalanceOfTheCurrentMonth();
                   break;
               case '4':
                  // personalBudgetManager.searchMoneyRecordFromSelectedPeriod();

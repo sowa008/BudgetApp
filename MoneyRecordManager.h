@@ -17,13 +17,16 @@ class MoneyRecordManager
 
     MoneyRecord newMoneyRecord;
 
+    int idOfTheLoggedUser;
+
     vector <MoneyRecord> incomes;
     vector <MoneyRecord> expanses;
     vector <MoneyRecord> moneyRecords;
 
 public:
-    MoneyRecordManager(int idOfTheLoggedUser)
+    MoneyRecordManager(int IdOfTheLoggedUser)
     {
+        idOfTheLoggedUser = IdOfTheLoggedUser;
         //incomes = xmlFileWithIncomes.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
         //expanses = xmlFileWithExpanses.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
     }
@@ -32,6 +35,9 @@ public:
 
     MoneyRecord askDataOfNewIncome();
     MoneyRecord askDataOfNewExpanse();
+    int getIdOfTheLastMoneyRecord(string fileName);
+    vector <MoneyRecord> getAllMoneyRecords(string fileName);
+
     //void addMoneyRecord(string fileName);
     //void addIncome(string fileName);
     //void addExpanse(string fileName);

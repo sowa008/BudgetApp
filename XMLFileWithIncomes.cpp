@@ -7,26 +7,19 @@
 #include <iostream>
 #include <vector>
 
-void XMLFileWithIncomes :: addIncome(string fileName)
+void XMLFileWithIncomes :: addIncome()
 {
-    addIncomeToXMLFile(fileName);
+    addIncomeToXMLFile();
     cout << "You have added an income" << endl;
     system("pause");
 }
 
-void XMLFileWithIncomes :: addIncomeToXMLFile(string fileName)
+int XMLFileWithIncomes :: getIdOfTheLastIncome()
 {
     fstream file;
-    int lastMoneyRecordId = 0;
-//    int moneyRecordId=0;
-//    int userId=0;
-//    int date=0;
-    string source="";
-//    float amount=0;
+    int lastIncomeId = 0;
 
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
-
-    newMoneyRecord = moneyRecordManager.askDataOfNewIncome();
 
     file.open(fileName.c_str(), ios::out | ios::app);
 
@@ -34,19 +27,32 @@ void XMLFileWithIncomes :: addIncomeToXMLFile(string fileName)
     {
         if (AuxiliaryMethods::isThisFileEmpty(file) == true)
         {
-            lastMoneyRecordId=0;
+            lastIncomeId=0;
         }
         else
         {
-            vector <MoneyRecord> allMoneyRecords = getAllMoneyRecords(fileName);
-            lastMoneyRecordId=allMoneyRecords.back().moneyRecordId;
+            vector <MoneyRecord> allIncomes = getAllIncomes();
+            lastIncomeId=allIncomes.back().moneyRecordId;
         }
     }
     else
         cout << "Could not open the file " << fileName << " and save the data." << endl;
     file.close();
 
-    newMoneyRecord.moneyRecordId = lastMoneyRecordId+1;
+    return lastIncomeId;
+}
+
+void XMLFileWithIncomes :: addIncomeToXMLFile()
+{
+    fstream file;
+    string source="";
+
+    MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
+    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewIncome();
+
+    int lastIncomeId = getIdOfTheLastIncome();
+
+    newMoneyRecord.moneyRecordId = lastIncomeId+1;
 
     CMarkup xml;
 
@@ -62,9 +68,15 @@ void XMLFileWithIncomes :: addIncomeToXMLFile(string fileName)
     xml.IntoElem();
     xml.AddElem( "incomeId", newMoneyRecord.moneyRecordId );
     xml.AddElem( "userId", idOfTheLoggedUser );
-    xml.AddElem( "date", newMoneyRecord.date );
+
+    string date = DateManager :: turnDateToStringWithHyphens(newMoneyRecord.date);
+    xml.AddElem( "date", date );
+
     xml.AddElem( "source", newMoneyRecord.item );
-    xml.AddElem( "amount", newMoneyRecord.amount );
+
+    string amountCovertedToString = AuxiliaryMethods :: convertFloatToString(newMoneyRecord.amount);
+
+    xml.AddElem( "amount", amountCovertedToString );
 
     if (xml.FindElem() == false)
     {
@@ -75,12 +87,12 @@ void XMLFileWithIncomes :: addIncomeToXMLFile(string fileName)
 
     file.open(fileName, ios::out);
 
-    file << csXML << endl;
+    file << csXML << endl; //tu pewnie wykrzacza sie zapis amount - zmiennoprzecinkowa=float
 
     file.close();
 }
 
-vector <MoneyRecord> XMLFileWithIncomes :: getAllMoneyRecords(string fileName)
+vector <MoneyRecord> XMLFileWithIncomes :: getAllIncomes()
 {
     CMarkup xml;
     bool bSuccess = xml.Load(fileName);
@@ -93,8 +105,6 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllMoneyRecords(string fileName)
 
     xml.FindElem();
     xml.IntoElem();
-
-    vector <MoneyRecord> allMoneyRecords;
 
     while (xml.FindElem("income"))
     {
@@ -119,25 +129,21 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllMoneyRecords(string fileName)
         newMoneyRecord.item = strSource;
         newMoneyRecord.amount = fAmount;
 
-        allMoneyRecords.push_back(newMoneyRecord);
+        allIncomes.push_back(newMoneyRecord);
     }
 
-    return allMoneyRecords;
+    return allIncomes;
 }
 
-void XMLFileWithIncomes :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord) //only incomes
+void XMLFileWithIncomes :: readAllIncomesFromXMLFile()
 {
     fstream file;
-//    int moneyRecordId;
-//    int userId;
-//    int date;
-    string source;
-//    float amount;
 
-    vector <MoneyRecord> allMoneyRecords;
+    string source;
+
     CMarkup xml;
 
-    file.open( AuxiliaryMethods::getIncomesFileName(), ios::in);
+    file.open(fileName, ios::in);
 
     if (file.good() == true)
     {
@@ -147,59 +153,68 @@ void XMLFileWithIncomes :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecor
         }
         else
         {
-            allMoneyRecords = getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
-            cout << "The number of incomes: " << allMoneyRecords.size() << endl;
+            allIncomes = getAllIncomes();
+            cout << "The number of incomes: " << allIncomes.size() << endl;
             cout << endl;
         }
     }
     else
-        cout << "Could not open the file " << AuxiliaryMethods::getIncomesFileName() << endl;
+        cout << "Could not open the file " << fileName << endl;
 
     file.close();
 
-    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
+    for (unsigned int i=0; i<allIncomes.size(); i++)
     {
-        cout << allMoneyRecords[i].moneyRecordId << endl;
-        cout << allMoneyRecords[i].userId << endl;
-        cout << allMoneyRecords[i].date << endl;
-        cout << allMoneyRecords[i].item << endl;
-        cout << allMoneyRecords[i].amount << endl;
+        cout << allIncomes[i].moneyRecordId << endl;
+        cout << allIncomes[i].userId << endl;
+        cout << allIncomes[i].date << endl;
+        cout << allIncomes[i].item << endl;
+        cout << allIncomes[i].amount << endl;
         cout << endl;
     }
 }
 
-void XMLFileWithIncomes :: saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords)
+void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
 {
     fstream file;
 
-//    int moneyRecordId=0;
-//    int userId=0;
-//    int date=0;
-    string source="";
-//    float amount=0;
-
-    file.open(AuxiliaryMethods::getIncomesFileName(), ios::out);
+    string source;
 
     CMarkup xml;
 
-    xml.AddElem("incomes");
-    xml.IntoElem();
+    file.open(fileName, ios::in);
 
-    for (unsigned int i=0; i<allMoneyRecords.size(); i++)
+    if (file.good() == true)
     {
-        xml.AddElem( "income" );
-        xml.IntoElem();
-        xml.AddElem( "moneyRecordId", allMoneyRecords[i].moneyRecordId );
-        xml.AddElem( "userId", allMoneyRecords[i].userId );
-        xml.AddElem( "date", allMoneyRecords[i].date );
-        xml.AddElem( "source", allMoneyRecords[i].item );
-        xml.AddElem( "amount", allMoneyRecords[i].amount );
-        xml.OutOfElem();
+        if (AuxiliaryMethods::isThisFileEmpty(file) == true)
+        {
+            cout << "This file is empty" << endl;
+        }
+        else
+        {
+            allIncomes = getAllIncomes();
+
+            cout << "The number of all the incomes in file: " << allIncomes.size() << endl;
+            cout << endl;
+        }
     }
-
-    string csXML = xml.GetDoc();
-
-    file << csXML << endl;
+    else
+        cout << "Could not open the file " << fileName << endl;
 
     file.close();
+
+
+
+    for (unsigned int i=0; i<allIncomes.size(); i++)
+    {
+        if (allIncomes[i].userId == idOfTheLoggedUser)
+        {
+        cout << allIncomes[i].moneyRecordId << endl;
+        cout << allIncomes[i].userId << endl;
+        cout << allIncomes[i].date << endl;
+        cout << allIncomes[i].item << endl;
+        cout << allIncomes[i].amount << endl;
+        cout << endl;
+        }
+    }
 }

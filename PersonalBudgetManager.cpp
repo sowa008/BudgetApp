@@ -7,13 +7,13 @@
 
 void PersonalBudgetManager :: addIncome()
 {
-    xmlFileWithIncomes->addIncome(AuxiliaryMethods :: getIncomesFileName());
+    xmlFileWithIncomes->addIncome();
 }
 
-void PersonalBudgetManager :: addExpanse()
+/*void PersonalBudgetManager :: addExpanse()
 {
-    xmlFileWithExpanses->addExpanse(AuxiliaryMethods :: getExpansesFileName());
-}
+    xmlFileWithExpanses->addExpanse();
+}*/
 
 void PersonalBudgetManager :: registerUser()
 {
@@ -25,11 +25,8 @@ void PersonalBudgetManager :: logInUser()
     userManager.logInUser();
     if (userManager.isUserLoggedIn())
     {
-        //moneyRecordManager = new MoneyRecordManager (userManager.getIdOfLoggedUser());
-        xmlFileWithExpanses = new XMLFileWithExpanses (userManager.getIdOfLoggedUser());
-        xmlFileWithIncomes = new XMLFileWithIncomes (userManager.getIdOfLoggedUser());
-        // (userManager.getIdOfLoggedUser());
-    //    adresatManager = new AdresatManager(NAZWA_PLIKU_Z_ADRESATAMI, NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
+        xmlFileWithIncomes = new XMLFileWithIncomes (userManager.getIdOfLoggedUser(), AuxiliaryMethods::getIncomesFileName());
+        //xmlFileWithExpanses
     }
 }
 
@@ -122,4 +119,10 @@ char PersonalBudgetManager :: chooseOneOptionFromUserMenu()
     choice = auxiliaryMethod.getCharacter();
 
     return choice;
+}
+
+void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
+{
+    xmlFileWithIncomes->readIncomesOfTheLoggedUserFromXMLFile();
+    system("pause");
 }

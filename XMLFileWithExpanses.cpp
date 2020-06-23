@@ -14,10 +14,38 @@ void XMLFileWithExpanses :: addExpanse(string fileName)
     system("pause");
 }
 
+int XMLFileWithExpanses :: getIdOfTheLastExpanse(string fileName)
+{
+    fstream file;
+    int lastExpanseId = 0;
+
+    MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
+
+    file.open(fileName.c_str(), ios::out | ios::app);
+
+    if (file.good() == true)
+    {
+        if (AuxiliaryMethods::isThisFileEmpty(file) == true)
+        {
+            lastExpanseId=0;
+        }
+        else
+        {
+            vector <MoneyRecord> allExpanses = getAllExpanses(fileName);
+            lastExpanseId=allExpanses.back().moneyRecordId;
+        }
+    }
+    else
+        cout << "Could not open the file " << fileName << " and save the data." << endl;
+    file.close();
+
+    return lastExpanseId;
+}
+
 void XMLFileWithExpanses :: addExpanseToXMLFile(string fileName)
 {
     fstream file;
-    int lastMoneyRecordId = 0;
+    int lastExpanseId = 0;
 //    int moneyRecordId=0;
 //    int userId=0;
 //    int date=0;
@@ -34,19 +62,19 @@ void XMLFileWithExpanses :: addExpanseToXMLFile(string fileName)
     {
         if (AuxiliaryMethods::isThisFileEmpty(file) == true)
         {
-            lastMoneyRecordId=0;;
+            lastExpanseId=0;;
         }
         else
         {
-            vector <MoneyRecord> allMoneyRecords = getAllMoneyRecords(fileName);
-            lastMoneyRecordId=allMoneyRecords.back().moneyRecordId;
+            vector <MoneyRecord> allExpanses = getAllExpanses(fileName);
+            lastExpanseId=allExpanses.back().moneyRecordId;
         }
     }
     else
         cout << "Could not open the file " << fileName << " and save the data." << endl;
     file.close();
 
-    newMoneyRecord.moneyRecordId = lastMoneyRecordId+1;
+    newMoneyRecord.moneyRecordId = lastExpanseId+1;
 
     CMarkup xml;
 
@@ -80,7 +108,7 @@ void XMLFileWithExpanses :: addExpanseToXMLFile(string fileName)
     file.close();
 }
 
-vector <MoneyRecord> XMLFileWithExpanses :: getAllMoneyRecords(string fileName)
+vector <MoneyRecord> XMLFileWithExpanses :: getAllExpanses(string fileName)
 {
     CMarkup xml;
     bool bSuccess = xml.Load(fileName);
@@ -147,7 +175,7 @@ void XMLFileWithExpanses :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyReco
         }
         else
         {
-            allMoneyRecords = getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
+            allMoneyRecords = getAllExpanses(AuxiliaryMethods::getIncomesFileName());
             cout << "The number of expanses: " << allMoneyRecords.size() << endl;
             cout << endl;
         }

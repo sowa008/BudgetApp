@@ -7,6 +7,7 @@
 #include <cstdlib>
 
 #include "MoneyRecord.h"
+#include "MoneyRecordManager.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
@@ -22,8 +23,9 @@ public:
     }
 
     void addExpanse(string fileName);
+    int getIdOfTheLastExpanse(string fileName);
     void addExpanseToXMLFile(string fileName);
-    vector <MoneyRecord> getAllMoneyRecords(string fileName);
+    vector <MoneyRecord> getAllExpanses(string fileName);
     void readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord);
     void saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords);
 };

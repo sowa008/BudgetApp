@@ -25,6 +25,14 @@ string AuxiliaryMethods :: convertIntToString(int number)
     return str;
 }
 
+string AuxiliaryMethods :: convertFloatToString(float number)
+{
+    ostringstream out;
+    out.precision(2);
+    out << fixed << number;
+    return out.str();
+}
+
 char AuxiliaryMethods :: getCharacter()
 {
     string entry = "";
