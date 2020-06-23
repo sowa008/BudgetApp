@@ -10,24 +10,26 @@ using namespace std;
 
 class MoneyRecordManager
 {
-    XMLFileWithMoneyRecordsExpanse xmlFileWithMoneyRecordsExpanse;
-    XMLFileWithMoneyRecordsIncome xmlFileWithMoneyRecordsIncome;
+    MoneyRecord newMoneyRecord;
+
+    XMLFileWithExpanses xmlFileWithExpanses;
+    XMLFileWithIncomes xmlFileWithIncomes;
 
     vector <MoneyRecord> incomes;
     vector <MoneyRecord> expanses;
     vector <MoneyRecord> moneyRecords;
 
 public:
-    MoneyRecordManager(int idOfTheLoggedUser) : xmlFileWithMoneyRecordsExpanse(idOfTheLoggedUser), xmlFileWithMoneyRecordsIncome(idOfTheLoggedUser)
+    MoneyRecordManager(int idOfTheLoggedUser) : xmlFileWithExpanses(idOfTheLoggedUser), xmlFileWithIncomes(idOfTheLoggedUser)
     {
-        incomes = xmlFileWithMoneyRecordsIncome.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
-        expanses = xmlFileWithMoneyRecordsExpanse.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
+        incomes = xmlFileWithIncomes.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
+        expanses = xmlFileWithExpanses.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
     }
 
     int getIdOfNewMoneyRecord();
 
-    int getIdOfTheLoggedUser();
-    MoneyRecord askDataOfNewMoneyRecord();
+    MoneyRecord askDataOfNewIncome();
+    MoneyRecord askDataOfNewExpanse();
     //void addMoneyRecord(string fileName);
     void addIncome(string fileName);
     void addExpanse(string fileName);

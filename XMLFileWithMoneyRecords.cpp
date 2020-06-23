@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-void XMLFileWithMoneyRecordsExpanse :: addMoneyRecordToXMLFile(string fileName) //Expanses
+void XMLFileWithExpanses :: addMoneyRecordToXMLFile(string fileName) //Expanses
 {
     fstream file;
     int lastMoneyRecordId = 0;
@@ -18,7 +18,7 @@ void XMLFileWithMoneyRecordsExpanse :: addMoneyRecordToXMLFile(string fileName) 
 
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
 
-    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewMoneyRecord();
+    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewExpanse();
 
     file.open(fileName.c_str(), ios::out | ios::app);
 
@@ -72,7 +72,7 @@ void XMLFileWithMoneyRecordsExpanse :: addMoneyRecordToXMLFile(string fileName) 
     file.close();
 }
 
-vector <MoneyRecord> XMLFileWithMoneyRecordsExpanse :: getAllMoneyRecords(string fileName)
+vector <MoneyRecord> XMLFileWithExpanses :: getAllMoneyRecords(string fileName)
 {
     CMarkup xml;
     bool bSuccess = xml.Load(fileName);
@@ -117,7 +117,7 @@ vector <MoneyRecord> XMLFileWithMoneyRecordsExpanse :: getAllMoneyRecords(string
     return allMoneyRecords;
 }
 
-void XMLFileWithMoneyRecordsExpanse :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord)
+void XMLFileWithExpanses :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord)
 {
     fstream file;
 //    int moneyRecordId;
@@ -160,7 +160,7 @@ void XMLFileWithMoneyRecordsExpanse :: readMoneyRecordsFromXMLFile(MoneyRecord n
     }
 }
 
-void XMLFileWithMoneyRecordsExpanse :: saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords)
+void XMLFileWithExpanses :: saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords)
 {
     fstream file;
 
@@ -198,7 +198,7 @@ void XMLFileWithMoneyRecordsExpanse :: saveAllMoneyRecordsToXMLFile(vector<Money
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-void XMLFileWithMoneyRecordsIncome :: addMoneyRecordToXMLFile(string fileName) //Incomes
+void XMLFileWithIncomes :: addMoneyRecordToXMLFile(string fileName) //Incomes
 {
     fstream file;
     int lastMoneyRecordId = 0;
@@ -210,7 +210,7 @@ void XMLFileWithMoneyRecordsIncome :: addMoneyRecordToXMLFile(string fileName) /
 
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
 
-    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewMoneyRecord();
+    MoneyRecord newMoneyRecord = moneyRecordManager.askDataOfNewIncome();
 
     file.open(fileName.c_str(), ios::out | ios::app);
 
@@ -264,7 +264,7 @@ void XMLFileWithMoneyRecordsIncome :: addMoneyRecordToXMLFile(string fileName) /
     file.close();
 }
 
-vector <MoneyRecord> XMLFileWithMoneyRecordsIncome :: getAllMoneyRecords(string fileName)
+vector <MoneyRecord> XMLFileWithIncomes :: getAllMoneyRecords(string fileName)
 {
     CMarkup xml;
     bool bSuccess = xml.Load(fileName);
@@ -309,7 +309,7 @@ vector <MoneyRecord> XMLFileWithMoneyRecordsIncome :: getAllMoneyRecords(string 
     return allMoneyRecords;
 }
 
-void XMLFileWithMoneyRecordsIncome :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord) //only incomes
+void XMLFileWithIncomes :: readMoneyRecordsFromXMLFile(MoneyRecord newMoneyRecord) //only incomes
 {
     fstream file;
 //    int moneyRecordId;
@@ -352,7 +352,7 @@ void XMLFileWithMoneyRecordsIncome :: readMoneyRecordsFromXMLFile(MoneyRecord ne
     }
 }
 
-void XMLFileWithMoneyRecordsIncome :: saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords)
+void XMLFileWithIncomes :: saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords)
 {
     fstream file;
 

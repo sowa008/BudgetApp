@@ -30,10 +30,10 @@ public:
     virtual void saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords) = 0;
 };
 
-class XMLFileWithMoneyRecordsExpanse : public XMLFileWithMoneyRecords
+class XMLFileWithExpanses : public XMLFileWithMoneyRecords
 {
 public:
-    XMLFileWithMoneyRecordsExpanse(int IdOfTheLoggedUser) : XMLFileWithMoneyRecords(IdOfTheLoggedUser)
+    XMLFileWithExpanses(int IdOfTheLoggedUser) : XMLFileWithMoneyRecords(IdOfTheLoggedUser)
     {
     }
 
@@ -43,11 +43,11 @@ public:
     void saveAllMoneyRecordsToXMLFile(vector<MoneyRecord> allMoneyRecords);
 };
 
-class XMLFileWithMoneyRecordsIncome : public XMLFileWithMoneyRecords
+class XMLFileWithIncomes : public XMLFileWithMoneyRecords
 {
 
 public:
-    XMLFileWithMoneyRecordsIncome(int IdOfTheLoggedUser) : XMLFileWithMoneyRecords(IdOfTheLoggedUser)
+    XMLFileWithIncomes(int IdOfTheLoggedUser) : XMLFileWithMoneyRecords(IdOfTheLoggedUser)
     {
     }
 
