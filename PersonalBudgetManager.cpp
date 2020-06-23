@@ -1,14 +1,18 @@
 #include "PersonalBudgetManager.h"
 #include "UserManager.h"
 
+#include "XMLFileWithIncomes.h"
+#include "XMLFileWithExpanses.h"
+
+
 void PersonalBudgetManager :: addIncome()
 {
-    moneyRecordManager->addIncome(AuxiliaryMethods :: getIncomesFileName());
+    xmlFileWithIncomes->addIncome(AuxiliaryMethods :: getIncomesFileName());
 }
 
 void PersonalBudgetManager :: addExpanse()
 {
-    moneyRecordManager->addExpanse(AuxiliaryMethods :: getExpansesFileName());
+    xmlFileWithExpanses->addExpanse(AuxiliaryMethods :: getExpansesFileName());
 }
 
 void PersonalBudgetManager :: registerUser()
@@ -21,7 +25,9 @@ void PersonalBudgetManager :: logInUser()
     userManager.logInUser();
     if (userManager.isUserLoggedIn())
     {
-        moneyRecordManager = new MoneyRecordManager (userManager.getIdOfLoggedUser());
+        //moneyRecordManager = new MoneyRecordManager (userManager.getIdOfLoggedUser());
+        xmlFileWithExpanses = new XMLFileWithExpanses (userManager.getIdOfLoggedUser());
+        xmlFileWithIncomes = new XMLFileWithIncomes (userManager.getIdOfLoggedUser());
         // (userManager.getIdOfLoggedUser());
     //    adresatManager = new AdresatManager(NAZWA_PLIKU_Z_ADRESATAMI, NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
     }

@@ -2,7 +2,8 @@
 #define MONEYRECORDMANAGER_H
 #include <iostream>
 #include "MoneyRecord.h"
-#include "XMLFileWithMoneyRecords.h"
+#include "XMLFileWithExpanses.h"
+#include "XMLFileWithIncomes.h"
 #include "AuxiliaryMethods.h"
 #include "DateManager.h"
 
@@ -10,20 +11,21 @@ using namespace std;
 
 class MoneyRecordManager
 {
-    MoneyRecord newMoneyRecord;
 
-    XMLFileWithExpanses xmlFileWithExpanses;
-    XMLFileWithIncomes xmlFileWithIncomes;
+//    XMLFileWithExpanses xmlFileWithExpanses(int IdOfTheLoggedUser);
+//    XMLFileWithIncomes xmlFileWithIncomes(int IdOfTheLoggedUser);
+
+    MoneyRecord newMoneyRecord;
 
     vector <MoneyRecord> incomes;
     vector <MoneyRecord> expanses;
     vector <MoneyRecord> moneyRecords;
 
 public:
-    MoneyRecordManager(int idOfTheLoggedUser) : xmlFileWithExpanses(idOfTheLoggedUser), xmlFileWithIncomes(idOfTheLoggedUser)
+    MoneyRecordManager(int idOfTheLoggedUser)
     {
-        incomes = xmlFileWithIncomes.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
-        expanses = xmlFileWithExpanses.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
+        //incomes = xmlFileWithIncomes.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
+        //expanses = xmlFileWithExpanses.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
     }
 
     int getIdOfNewMoneyRecord();
@@ -31,8 +33,8 @@ public:
     MoneyRecord askDataOfNewIncome();
     MoneyRecord askDataOfNewExpanse();
     //void addMoneyRecord(string fileName);
-    void addIncome(string fileName);
-    void addExpanse(string fileName);
+    //void addIncome(string fileName);
+    //void addExpanse(string fileName);
 };
 
 #endif

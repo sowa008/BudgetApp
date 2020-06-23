@@ -83,17 +83,3 @@ MoneyRecord MoneyRecordManager :: askDataOfNewExpanse()
 }
 
 
-void MoneyRecordManager :: addIncome(string fileName)
-{
-    xmlFileWithIncomes.addMoneyRecordToXMLFile(fileName);
-    cout << "You have added an income" << endl;
-    system("pause");
-}
-
-void MoneyRecordManager :: addExpanse(string fileName)
-{
-    xmlFileWithExpanses.addMoneyRecordToXMLFile(fileName);
-    cout << "You have added an expanse" << endl;
-    system("pause");
-}
-

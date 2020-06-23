@@ -1,5 +1,7 @@
 #include <iostream>
 #include "PersonalBudgetManager.h"
+#include "XMLFileWithExpanses.h"
+#include "XMLFileWithIncomes.h"
 
 using namespace std;
 

@@ -5,17 +5,20 @@
 #include "UserManager.h"
 #include "IncomeManager.h"
 #include "ExpanseManager.h"
-#include "XMLFileWithMoneyRecords.h"
 
 using namespace std;
+
+class XMLFileWithIncomes;
+class XMLFileWithExpanses;
 
 class PersonalBudgetManager
 {
 
     float income, expanse;
 
-   // const string USERS_FILE_NAME;
-    MoneyRecordManager *moneyRecordManager;
+    //MoneyRecordManager *moneyRecordManager;
+    XMLFileWithIncomes *xmlFileWithIncomes;
+    XMLFileWithExpanses *xmlFileWithExpanses;
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
     //IncomeManager incomeManager;
@@ -29,13 +32,16 @@ public:
     */
     PersonalBudgetManager()
     {
-    moneyRecordManager=NULL;
+    xmlFileWithIncomes=NULL;
+    xmlFileWithExpanses=NULL;
     };
 
     ~PersonalBudgetManager()
     {
-    delete moneyRecordManager;
-    moneyRecordManager=NULL;
+    delete xmlFileWithIncomes;
+    delete xmlFileWithExpanses;
+    xmlFileWithIncomes=NULL;
+    xmlFileWithExpanses=NULL;;
     }
 
   //  void dodajAdresata();
