@@ -31,6 +31,8 @@ public:
     static bool validateDay(int day, int month, int year);
     static int validateDate();
     static string turnDateToStringWithHyphens(int date);
+    static int convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(string date);
+
 };
 
 #endif

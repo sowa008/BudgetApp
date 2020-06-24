@@ -116,7 +116,8 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllIncomes()
         xml.FindElem( "userId" );
         int nUserId = atoi( MCD_2PCSZ(xml.GetData()) );
         xml.FindElem( "date" );
-        int nDate = atoi( MCD_2PCSZ(xml.GetData()) );
+        string strDate = xml.GetData();
+        int nDate = DateManager :: convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(strDate);
         xml.FindElem( "source" );
         string strSource = xml.GetData();
         xml.FindElem( "amount" );

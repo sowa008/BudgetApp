@@ -216,3 +216,14 @@ string DateManager :: turnDateToStringWithHyphens(int date)
 
     return stringDateWithHyphens;
 }
+
+int DateManager :: convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(string date)
+{
+    int year, month, day;
+    day = returnDay(date);
+    month = returnMonth(date);
+    year = returnYear(date);
+
+    int dateRRRRMMDD = turnDateToInt(year, month, day);
+    return dateRRRRMMDD;
+}
