@@ -32,6 +32,7 @@ public:
     vector <MoneyRecord> getAllIncomes();
     vector <MoneyRecord> getIncomesOfTheLoggedUser();
     void readIncomesOfTheLoggedUserFromXMLFile();
+    float sumAllIncomesOfTheLoggedUser();
 };
 
 #endif

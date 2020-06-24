@@ -140,6 +140,7 @@ vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
 {
     CMarkup xml;
     bool bSuccess = xml.Load(fileName);
+    incomesOfTheLoggedUser.clear();
 
     if (bSuccess==false)
     {
@@ -188,6 +189,7 @@ void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
     fstream file;
     string source;
     CMarkup xml;
+    incomesOfTheLoggedUser.clear();
 //    vector <MoneyRecord> incomesOfTheLoggedUser = 0;
 
     file.open(fileName, ios::in);
@@ -219,5 +221,25 @@ void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
         cout << endl;
     }
 
+    float sum = sumAllIncomesOfTheLoggedUser();
+
+    cout << endl;
+    cout << "Sum of your incomes is = " << sum << endl;
+    cout << endl;
     file.close();
+}
+
+float XMLFileWithIncomes :: sumAllIncomesOfTheLoggedUser()
+{
+    float sum = 0.0;
+
+    vector <MoneyRecord> incomes;
+    incomes = getIncomesOfTheLoggedUser();
+
+    for (int i=0; i<incomes.size(); i++)
+    {
+        sum = sum + incomes[i].amount;
+    }
+
+    return sum;
 }

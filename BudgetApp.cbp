@@ -48,8 +48,10 @@
 		<Unit filename="User.h" />
 		<Unit filename="UserManager.cpp" />
 		<Unit filename="UserManager.h" />
-		<Unit filename="XMLFileWithMoneyRecords.cpp" />
-		<Unit filename="XMLFileWithMoneyRecords.h" />
+		<Unit filename="XMLFileWithExpanses.cpp" />
+		<Unit filename="XMLFileWithExpanses.h" />
+		<Unit filename="XMLFileWithIncomes.cpp" />
+		<Unit filename="XMLFileWithIncomes.h" />
 		<Unit filename="XMLFileWithUsers.cpp" />
 		<Unit filename="XMLFileWithUsers.h" />
 		<Unit filename="main.cpp" />
