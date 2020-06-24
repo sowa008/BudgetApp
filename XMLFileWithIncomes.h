@@ -17,6 +17,7 @@ class XMLFileWithIncomes
     int idOfTheLoggedUser;
     string fileName;
     vector <MoneyRecord> allIncomes;
+    vector <MoneyRecord> incomesOfTheLoggedUser;
 
 public:
     XMLFileWithIncomes(int IdOfTheLoggedUser, string FileName)
@@ -29,7 +30,7 @@ public:
     int getIdOfTheLastIncome();
     void addIncomeToXMLFile();
     vector <MoneyRecord> getAllIncomes();
-    void readAllIncomesFromXMLFile();
+    vector <MoneyRecord> getIncomesOfTheLoggedUser();
     void readIncomesOfTheLoggedUserFromXMLFile();
 };
 

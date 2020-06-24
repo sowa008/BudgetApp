@@ -136,52 +136,59 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllIncomes()
     return allIncomes;
 }
 
-void XMLFileWithIncomes :: readAllIncomesFromXMLFile()
+vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
 {
-    fstream file;
-
-    string source;
-
     CMarkup xml;
+    bool bSuccess = xml.Load(fileName);
 
-    file.open(fileName, ios::in);
-
-    if (file.good() == true)
+    if (bSuccess==false)
     {
-        if (AuxiliaryMethods::isThisFileEmpty(file) == true)
+        cout << "There is no such file!" << endl;
+        return {};
+    }
+
+    xml.FindElem();
+    xml.IntoElem();
+
+    while (xml.FindElem("income"))
+    {
+        MoneyRecord newMoneyRecord;
+
+        xml.IntoElem();
+        xml.FindElem( "incomeId" );
+        int nMoneyRecordId = atoi( MCD_2PCSZ(xml.GetData()) );
+        xml.FindElem( "userId" );
+        int nUserId = atoi( MCD_2PCSZ(xml.GetData()) );
+        xml.FindElem( "date" );
+        string strDate = xml.GetData();
+        int nDate = DateManager :: convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(strDate);
+        xml.FindElem( "source" );
+        string strSource = xml.GetData();
+        xml.FindElem( "amount" );
+        float fAmount = stof( xml.GetData() );
+        xml.OutOfElem();
+
+        newMoneyRecord.moneyRecordId = nMoneyRecordId;
+        newMoneyRecord.userId = nUserId;
+        newMoneyRecord.date = nDate;
+        newMoneyRecord.item = strSource;
+        newMoneyRecord.amount = fAmount;
+
+        if (newMoneyRecord.userId == idOfTheLoggedUser)
         {
-            cout << "This file is empty" << endl;
-        }
-        else
-        {
-            allIncomes = getAllIncomes();
-            cout << "The number of incomes: " << allIncomes.size() << endl;
-            cout << endl;
+            incomesOfTheLoggedUser.push_back(newMoneyRecord);
         }
     }
-    else
-        cout << "Could not open the file " << fileName << endl;
 
-    file.close();
-
-    for (unsigned int i=0; i<allIncomes.size(); i++)
-    {
-        cout << allIncomes[i].moneyRecordId << endl;
-        cout << allIncomes[i].userId << endl;
-        cout << allIncomes[i].date << endl;
-        cout << allIncomes[i].item << endl;
-        cout << allIncomes[i].amount << endl;
-        cout << endl;
-    }
+    return incomesOfTheLoggedUser;
 }
 
 void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
 {
     fstream file;
-
     string source;
-
     CMarkup xml;
+//    vector <MoneyRecord> incomesOfTheLoggedUser = 0;
 
     file.open(fileName, ios::in);
 
@@ -193,29 +200,24 @@ void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
         }
         else
         {
-            allIncomes = getAllIncomes();
+            incomesOfTheLoggedUser = getIncomesOfTheLoggedUser();
 
-            cout << "The number of all the incomes in file: " << allIncomes.size() << endl;
+            cout << "The number of user incomes in the file " << fileName << ": " << incomesOfTheLoggedUser.size() << endl;
             cout << endl;
         }
     }
     else
         cout << "Could not open the file " << fileName << endl;
 
-    file.close();
-
-
-
-    for (unsigned int i=0; i<allIncomes.size(); i++)
+    for (int i=0; i<incomesOfTheLoggedUser.size(); i++)
     {
-        if (allIncomes[i].userId == idOfTheLoggedUser)
-        {
-        cout << allIncomes[i].moneyRecordId << endl;
-        cout << allIncomes[i].userId << endl;
-        cout << allIncomes[i].date << endl;
-        cout << allIncomes[i].item << endl;
-        cout << allIncomes[i].amount << endl;
+        cout << incomesOfTheLoggedUser[i].moneyRecordId << "  ";
+        //cout << incomesOfTheLoggedUser[i].userId << endl;
+        cout << DateManager :: turnDateToStringWithHyphens(incomesOfTheLoggedUser[i].date) << "  ";
+        cout << incomesOfTheLoggedUser[i].item << "  ";
+        cout << incomesOfTheLoggedUser[i].amount << "  ";
         cout << endl;
-        }
     }
+
+    file.close();
 }

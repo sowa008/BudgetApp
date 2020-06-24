@@ -159,7 +159,7 @@
 	"MoneyRecordManager.h"
 	"AuxiliaryMethods.h"
 
-1592932662 c:\praca\programy\budgetapp\xmlfilewithincomes.h
+1592987163 c:\praca\programy\budgetapp\xmlfilewithincomes.h
 	<iostream>
 	<vector>
 	<fstream>
@@ -178,7 +178,7 @@
 	<iostream>
 	<vector>
 
-1592984059 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
+1592987531 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	"MoneyRecordManager.h"
