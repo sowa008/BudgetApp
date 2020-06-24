@@ -123,12 +123,42 @@ char PersonalBudgetManager :: chooseOneOptionFromUserMenu()
 
 void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 {
-    xmlFileWithIncomes->showTheIncomesOfTheCurrentMonth();
+    vector <MoneyRecord> incomesOfTheCurrentMonth = xmlFileWithIncomes->showTheIncomesOfTheCurrentMonth();
+    xmlFileWithIncomes->showVector(incomesOfTheCurrentMonth);
+
+    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheCurrentMonth);
+
+    cout << endl;
+    cout << "Sum of your incomes from the current month: " << sum << endl;
+    cout << endl;
+
     system("pause");
 }
 
 void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
 {
-    xmlFileWithIncomes->showTheIncomesOfThePreviousMonth();
+    vector <MoneyRecord> incomesOfThePreviousMonth = xmlFileWithIncomes->showTheIncomesOfThePreviousMonth();
+    xmlFileWithIncomes->showVector(incomesOfThePreviousMonth);
+
+    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfThePreviousMonth);
+
+    cout << endl;
+    cout << "Sum of your incomes from the previous month: " << sum << endl;
+    cout << endl;
+
+    system("pause");
+}
+
+void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
+{
+    vector <MoneyRecord> incomesOfTheSelectedPeriod = xmlFileWithIncomes->showTheIncomesOfTheSelectedPeriod();
+    xmlFileWithIncomes->showVector(incomesOfTheSelectedPeriod);
+
+    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheSelectedPeriod);
+
+    cout << endl;
+    cout << "Sum of your incomes from the selected period: " << sum << endl;
+    cout << endl;
+
     system("pause");
 }

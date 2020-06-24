@@ -56,19 +56,19 @@
 	"User.h"
 	"AuxiliaryMethods.h"
 
-1593021285 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+1593026309 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
 	"PersonalBudgetManager.h"
 	"UserManager.h"
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 
-1593021285 c:\praca\programy\budgetapp\personalbudgetmanager.h
+1593026454 c:\praca\programy\budgetapp\personalbudgetmanager.h
 	<iostream>
 	"UserManager.h"
 	"IncomeManager.h"
 	"ExpanseManager.h"
 
-1593021334 source:c:\praca\programy\budgetapp\main.cpp
+1593026355 source:c:\praca\programy\budgetapp\main.cpp
 	<iostream>
 	"PersonalBudgetManager.h"
 	"XMLFileWithExpanses.h"
@@ -147,12 +147,12 @@
 	<windows.h>
 	<winbase.h>
 
-1593021677 source:c:\praca\programy\budgetapp\datemanager.cpp
+1593028937 source:c:\praca\programy\budgetapp\datemanager.cpp
 	"DateManager.h"
 
 1593017586 c:\praca\programy\budgetapp\xmlfilewithexpanses.h
 
-1593021241 c:\praca\programy\budgetapp\xmlfilewithincomes.h
+1593026418 c:\praca\programy\budgetapp\xmlfilewithincomes.h
 	<iostream>
 	<vector>
 	<fstream>
@@ -163,7 +163,7 @@
 
 1593017586 source:c:\praca\programy\budgetapp\xmlfilewithexpanses.cpp
 
-1593022119 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
+1593028186 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	"MoneyRecordManager.h"

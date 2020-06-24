@@ -32,12 +32,13 @@ public:
     void addIncomeToXMLFile();
     vector <MoneyRecord> getAllIncomes();
     vector <MoneyRecord> getIncomesOfTheLoggedUser();
-    void readIncomesOfTheLoggedUserFromXMLFile();
-    float sumAllIncomesOfTheLoggedUser();
-
-    //bool compareDates( const MoneyRecord & L, const MoneyRecord & R );
-    void showTheIncomesOfTheCurrentMonth();
-    void showTheIncomesOfThePreviousMonth();
+    vector <MoneyRecord> sortVectorAccordingToDates();
+    //void readIncomesOfTheLoggedUserFromXMLFile();
+    float sumTheIncomesOfTheLoggedUser(vector<MoneyRecord> newVector);
+    vector <MoneyRecord> showTheIncomesOfTheCurrentMonth();
+    vector <MoneyRecord> showTheIncomesOfThePreviousMonth();
+    vector <MoneyRecord> showTheIncomesOfTheSelectedPeriod();
+    void showVector(vector<MoneyRecord> newVector);
 };
 
 #endif

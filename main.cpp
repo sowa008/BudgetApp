@@ -62,8 +62,9 @@ int main()
                  personalBudgetManager.showTheBalanceOfThePreviousMonth();
                   break;
               case '5':
-                 // personalBudgetManager.showAllMoneyRecords();
+                 personalBudgetManager.showTheBalanceOfTheSelectedPeriod();
                   break;
+  ///////////////////////////////////////////////////////////////////////////////////////////////
             case '7':
                 personalBudgetManager.changePassword();
                 break;

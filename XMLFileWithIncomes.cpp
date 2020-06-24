@@ -185,7 +185,7 @@ vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
     return incomesOfTheLoggedUser;
 }
 
-void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
+/*void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
 {
     fstream file;
     string source;
@@ -222,24 +222,21 @@ void XMLFileWithIncomes :: readIncomesOfTheLoggedUserFromXMLFile()
         cout << endl;
     }
 
-    float sum = sumAllIncomesOfTheLoggedUser();
+    //float sum = sumTheIncomesOfTheLoggedUser();
 
     cout << endl;
-    cout << "Sum of your incomes is = " << sum << endl;
+//    cout << "Sum of your incomes is = " << sum << endl;
     cout << endl;
     file.close();
-}
+} */
 
-float XMLFileWithIncomes :: sumAllIncomesOfTheLoggedUser()
+float XMLFileWithIncomes :: sumTheIncomesOfTheLoggedUser(vector<MoneyRecord> newVector)
 {
     float sum = 0.0;
 
-    vector <MoneyRecord> incomes;
-    incomes = getIncomesOfTheLoggedUser();
-
-    for (int i=0; i<incomes.size(); i++)
+    for (int i=0; i<newVector.size(); i++)
     {
-        sum = sum + incomes[i].amount;
+        sum = sum + newVector[i].amount;
     }
 
     return sum;
@@ -250,14 +247,19 @@ bool compareDates( const MoneyRecord & L, const MoneyRecord & R )
     return (L.date > R.date);
 }
 
-void XMLFileWithIncomes :: showTheIncomesOfTheCurrentMonth()
+vector <MoneyRecord> XMLFileWithIncomes :: sortVectorAccordingToDates()
 {
     incomesOfTheLoggedUser = getIncomesOfTheLoggedUser();
 
     sort(incomesOfTheLoggedUser.begin(), incomesOfTheLoggedUser.end(), compareDates);
 
-    cout << endl;
-    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+    return incomesOfTheLoggedUser;
+}
+
+vector <MoneyRecord> XMLFileWithIncomes :: showTheIncomesOfTheCurrentMonth()
+{
+    vector <MoneyRecord> vectorWithIncomesOfCurrentMonth;
+    incomesOfTheLoggedUser = sortVectorAccordingToDates();
 
     int currentMonth = DateManager :: getTheCurrentMonth();
     int currentYear = DateManager :: getTheCurrentYear();
@@ -270,24 +272,16 @@ void XMLFileWithIncomes :: showTheIncomesOfTheCurrentMonth()
 
         if ((monthOfIncome==currentMonth) && (yearOfIncome==currentYear))
         {
-        cout << " " << i+1 << "      ";
-        cout << incomesOfTheLoggedUser[i].moneyRecordId << "      ";
-        cout << DateManager :: turnDateToStringWithHyphens(incomesOfTheLoggedUser[i].date) << "    ";
-        cout << incomesOfTheLoggedUser[i].amount << "     ";
-        cout << incomesOfTheLoggedUser[i].item << "  ";
-        cout << endl;
+            vectorWithIncomesOfCurrentMonth.push_back(incomesOfTheLoggedUser[i]);
         }
     }
+    return vectorWithIncomesOfCurrentMonth;
 }
 
-void XMLFileWithIncomes :: showTheIncomesOfThePreviousMonth()
+vector <MoneyRecord> XMLFileWithIncomes :: showTheIncomesOfThePreviousMonth()
 {
-    incomesOfTheLoggedUser = getIncomesOfTheLoggedUser();
-
-    sort(incomesOfTheLoggedUser.begin(), incomesOfTheLoggedUser.end(), compareDates);
-
-    cout << endl;
-    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+    vector <MoneyRecord> vectorWithIncomesOfPreviousMonth;
+    incomesOfTheLoggedUser = sortVectorAccordingToDates();
 
     int currentMonth = DateManager :: getTheCurrentMonth();
     int currentYear = DateManager :: getTheCurrentYear();
@@ -300,13 +294,55 @@ void XMLFileWithIncomes :: showTheIncomesOfThePreviousMonth()
 
         if( ((monthOfIncome==currentMonth-1) && (yearOfIncome==currentYear)) || ((monthOfIncome==12) && (currentMonth==1) && (yearOfIncome==currentYear-1)) )
         {
-        cout << " " << i+1 << "      ";
-        cout << incomesOfTheLoggedUser[i].moneyRecordId << "      ";
-        cout << DateManager :: turnDateToStringWithHyphens(incomesOfTheLoggedUser[i].date) << "    ";
-        cout << incomesOfTheLoggedUser[i].amount << "     ";
-        cout << incomesOfTheLoggedUser[i].item << "  ";
-        cout << endl;
+            vectorWithIncomesOfPreviousMonth.push_back(incomesOfTheLoggedUser[i]);
         }
     }
+
+    return vectorWithIncomesOfPreviousMonth;
+}
+
+vector <MoneyRecord> XMLFileWithIncomes :: showTheIncomesOfTheSelectedPeriod()
+{
+    cout << "From: ";
+    int dateBegin = DateManager :: validateDate();
+
+    cout << "To: ";
+    int dateEnd = DateManager :: validateDate();
+
+    cout << "Selected period: " << endl;
+    cout << "From: " << DateManager :: turnDateToStringWithHyphens(dateBegin) << endl;
+    cout << "To: " << DateManager :: turnDateToStringWithHyphens(dateEnd) << endl;
+
+    vector <MoneyRecord> vectorWithIncomesOfTheSelectedPeriod;
+    incomesOfTheLoggedUser = sortVectorAccordingToDates();
+
+    for (int i=0; i<incomesOfTheLoggedUser.size(); i++)
+    {
+        if( (incomesOfTheLoggedUser[i].date>=dateBegin) && (incomesOfTheLoggedUser[i].date<=dateEnd) )
+        {
+            vectorWithIncomesOfTheSelectedPeriod.push_back(incomesOfTheLoggedUser[i]);
+        }
+    }
+
+    return vectorWithIncomesOfTheSelectedPeriod;
+}
+
+void XMLFileWithIncomes :: showVector(vector<MoneyRecord> newVector)
+{
+    if (newVector.size()!=0)
+    {
+    cout << endl;
+    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+
+    for (int i=0; i<newVector.size(); i++)
+    {
+        cout << " " << i+1 << "      ";
+        cout << newVector[i].moneyRecordId << "      ";
+        cout << DateManager :: turnDateToStringWithHyphens(newVector[i].date) << "    ";
+        cout << newVector[i].amount << "     ";
+        cout << newVector[i].item << endl;
+    }
+    }
+    else cout << endl << "No data to display!" << endl << endl;
 }
 
