@@ -68,6 +68,7 @@ public:
     char chooseOneOptionFromUserMenu();
 
     void showTheBalanceOfTheCurrentMonth();
+    void showTheBalanceOfThePreviousMonth();
 
 };
 

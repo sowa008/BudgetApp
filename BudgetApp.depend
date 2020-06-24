@@ -56,19 +56,19 @@
 	"User.h"
 	"AuxiliaryMethods.h"
 
-1592936092 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+1593021285 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
 	"PersonalBudgetManager.h"
 	"UserManager.h"
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 
-1592935751 c:\praca\programy\budgetapp\personalbudgetmanager.h
+1593021285 c:\praca\programy\budgetapp\personalbudgetmanager.h
 	<iostream>
 	"UserManager.h"
 	"IncomeManager.h"
 	"ExpanseManager.h"
 
-1592935751 source:c:\praca\programy\budgetapp\main.cpp
+1593021334 source:c:\praca\programy\budgetapp\main.cpp
 	<iostream>
 	"PersonalBudgetManager.h"
 	"XMLFileWithExpanses.h"
@@ -136,7 +136,7 @@
 	"MoneyRecord.h"
 	"AuxiliaryMethods.h"
 
-1592984059 c:\praca\programy\budgetapp\datemanager.h
+1593021677 c:\praca\programy\budgetapp\datemanager.h
 	"AuxiliaryMethods.h"
 	<iostream>
 	<sstream>
@@ -147,10 +147,12 @@
 	<windows.h>
 	<winbase.h>
 
-1592984111 source:c:\praca\programy\budgetapp\datemanager.cpp
+1593021677 source:c:\praca\programy\budgetapp\datemanager.cpp
 	"DateManager.h"
 
-1592923789 c:\praca\programy\budgetapp\xmlfilewithexpanses.h
+1593017586 c:\praca\programy\budgetapp\xmlfilewithexpanses.h
+
+1593021241 c:\praca\programy\budgetapp\xmlfilewithincomes.h
 	<iostream>
 	<vector>
 	<fstream>
@@ -159,26 +161,9 @@
 	"MoneyRecordManager.h"
 	"AuxiliaryMethods.h"
 
-1592990383 c:\praca\programy\budgetapp\xmlfilewithincomes.h
-	<iostream>
-	<vector>
-	<fstream>
-	<cstdlib>
-	"MoneyRecord.h"
-	"MoneyRecordManager.h"
-	"AuxiliaryMethods.h"
+1593017586 source:c:\praca\programy\budgetapp\xmlfilewithexpanses.cpp
 
-1592923527 source:c:\praca\programy\budgetapp\xmlfilewithexpanses.cpp
-	"XMLFileWithExpanses.h"
-	"XMLFileWithIncomes.h"
-	"MoneyRecordManager.h"
-	"Markup.h"
-	"MoneyRecord.h"
-	"UserManager.h"
-	<iostream>
-	<vector>
-
-1592990853 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
+1593022119 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	"MoneyRecordManager.h"
@@ -187,4 +172,5 @@
 	"UserManager.h"
 	<iostream>
 	<vector>
+	<algorithm>
 

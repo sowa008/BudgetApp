@@ -6,6 +6,7 @@
 #include "UserManager.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 void XMLFileWithIncomes :: addIncome()
 {
@@ -243,3 +244,69 @@ float XMLFileWithIncomes :: sumAllIncomesOfTheLoggedUser()
 
     return sum;
 }
+
+bool compareDates( const MoneyRecord & L, const MoneyRecord & R )
+{
+    return (L.date > R.date);
+}
+
+void XMLFileWithIncomes :: showTheIncomesOfTheCurrentMonth()
+{
+    incomesOfTheLoggedUser = getIncomesOfTheLoggedUser();
+
+    sort(incomesOfTheLoggedUser.begin(), incomesOfTheLoggedUser.end(), compareDates);
+
+    cout << endl;
+    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+
+    int currentMonth = DateManager :: getTheCurrentMonth();
+    int currentYear = DateManager :: getTheCurrentYear();
+    int monthOfIncome, yearOfIncome;
+
+    for (int i=0; i<incomesOfTheLoggedUser.size(); i++)
+    {
+        monthOfIncome = DateManager :: whatIsTheMonthOfThisDate(incomesOfTheLoggedUser[i].date);
+        yearOfIncome = DateManager :: whatIsTheYearOfThisDate(incomesOfTheLoggedUser[i].date);
+
+        if ((monthOfIncome==currentMonth) && (yearOfIncome==currentYear))
+        {
+        cout << " " << i+1 << "      ";
+        cout << incomesOfTheLoggedUser[i].moneyRecordId << "      ";
+        cout << DateManager :: turnDateToStringWithHyphens(incomesOfTheLoggedUser[i].date) << "    ";
+        cout << incomesOfTheLoggedUser[i].amount << "     ";
+        cout << incomesOfTheLoggedUser[i].item << "  ";
+        cout << endl;
+        }
+    }
+}
+
+void XMLFileWithIncomes :: showTheIncomesOfThePreviousMonth()
+{
+    incomesOfTheLoggedUser = getIncomesOfTheLoggedUser();
+
+    sort(incomesOfTheLoggedUser.begin(), incomesOfTheLoggedUser.end(), compareDates);
+
+    cout << endl;
+    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+
+    int currentMonth = DateManager :: getTheCurrentMonth();
+    int currentYear = DateManager :: getTheCurrentYear();
+    int monthOfIncome, yearOfIncome;
+
+    for (int i=0; i<incomesOfTheLoggedUser.size(); i++)
+    {
+        monthOfIncome = DateManager :: whatIsTheMonthOfThisDate(incomesOfTheLoggedUser[i].date);
+        yearOfIncome = DateManager :: whatIsTheYearOfThisDate(incomesOfTheLoggedUser[i].date);
+
+        if( ((monthOfIncome==currentMonth-1) && (yearOfIncome==currentYear)) || ((monthOfIncome==12) && (currentMonth==1) && (yearOfIncome==currentYear-1)) )
+        {
+        cout << " " << i+1 << "      ";
+        cout << incomesOfTheLoggedUser[i].moneyRecordId << "      ";
+        cout << DateManager :: turnDateToStringWithHyphens(incomesOfTheLoggedUser[i].date) << "    ";
+        cout << incomesOfTheLoggedUser[i].amount << "     ";
+        cout << incomesOfTheLoggedUser[i].item << "  ";
+        cout << endl;
+        }
+    }
+}
+

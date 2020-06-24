@@ -59,7 +59,7 @@ int main()
                  personalBudgetManager.showTheBalanceOfTheCurrentMonth();
                   break;
               case '4':
-                 // personalBudgetManager.searchMoneyRecordFromSelectedPeriod();
+                 personalBudgetManager.showTheBalanceOfThePreviousMonth();
                   break;
               case '5':
                  // personalBudgetManager.showAllMoneyRecords();

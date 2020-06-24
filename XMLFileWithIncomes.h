@@ -14,6 +14,7 @@ using namespace std;
 
 class XMLFileWithIncomes
 {
+    MoneyRecord newMoneyRecord;
     int idOfTheLoggedUser;
     string fileName;
     vector <MoneyRecord> allIncomes;
@@ -33,6 +34,10 @@ public:
     vector <MoneyRecord> getIncomesOfTheLoggedUser();
     void readIncomesOfTheLoggedUserFromXMLFile();
     float sumAllIncomesOfTheLoggedUser();
+
+    //bool compareDates( const MoneyRecord & L, const MoneyRecord & R );
+    void showTheIncomesOfTheCurrentMonth();
+    void showTheIncomesOfThePreviousMonth();
 };
 
 #endif

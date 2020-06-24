@@ -7,6 +7,20 @@ void DateManager :: showTodayDate()
     cout << "Today is: " << st.wYear << "-" << st.wMonth << "-" << st.wDay << endl;
 }
 
+int DateManager :: getTheCurrentMonth()
+{
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    return st.wMonth;
+}
+
+int DateManager :: getTheCurrentYear()
+{
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    return st.wYear;
+}
+
 int DateManager :: turnTodayDateToInt()
 {
     SYSTEMTIME st;
@@ -22,6 +36,24 @@ int DateManager :: turnDateToInt(int year, int month, int day)
 {
     int date = year*10000 + month*100 + day;
     return date;
+}
+
+int DateManager :: whatIsTheMonthOfThisDate(int date)
+{
+    int month = 0;
+    int day = date%100;
+    month = ((date-day)/100)%100;
+    return month;
+}
+
+int DateManager :: whatIsTheYearOfThisDate(int date)
+{
+    int year = 0;
+    int month = 0;
+    int day = date%100;
+    month = ((date-day)/100)%100;
+    year = (date - day - month)/10000;
+    return year;
 }
 
 string DateManager :: askDate()

@@ -19,7 +19,11 @@ class DateManager
 public:
 
     static void showTodayDate();
+    static int getTheCurrentMonth();
+    static int getTheCurrentYear();
     static int turnTodayDateToInt();
+    static int whatIsTheMonthOfThisDate(int date);
+    static int whatIsTheYearOfThisDate(int date);
     static int turnDateToInt(int year, int month, int day);
     static string askDate();
     static string checkFormat(string date);

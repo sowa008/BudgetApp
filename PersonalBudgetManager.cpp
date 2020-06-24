@@ -123,6 +123,12 @@ char PersonalBudgetManager :: chooseOneOptionFromUserMenu()
 
 void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 {
-    xmlFileWithIncomes->readIncomesOfTheLoggedUserFromXMLFile();
+    xmlFileWithIncomes->showTheIncomesOfTheCurrentMonth();
+    system("pause");
+}
+
+void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
+{
+    xmlFileWithIncomes->showTheIncomesOfThePreviousMonth();
     system("pause");
 }
