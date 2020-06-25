@@ -181,9 +181,9 @@ void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
     cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sumOfIncomes << endl;
     cout << "Sum of your expanses from the selected period: " << setprecision(2) << fixed << sumOfExpanses << endl;
     cout << endl;
-    if (sumOfIncomes-sumOfExpanses>0) {SetConsoleTextAttribute(hConsole, 10);}
+    if (sumOfIncomes-sumOfExpanses>=0) {SetConsoleTextAttribute(hConsole, 10);}
     else {SetConsoleTextAttribute(hConsole, 12);}
-    cout << "The balance of the previous month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
+    cout << "The balance of the the selected period: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
     SetConsoleTextAttribute(hConsole, 7);
 

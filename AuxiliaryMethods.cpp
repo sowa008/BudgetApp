@@ -33,12 +33,20 @@ string AuxiliaryMethods :: convertFloatToString(float number)
     return out.str();
 }
 
-float AuxiliaryMethods :: convertStringToFloat(string text)
+/*float AuxiliaryMethods :: convertStringToFloat(string text)
 {
     float convertedString;
     istringstream iss(text);
     iss >> convertedString;
     return convertedString;
+}*/
+
+string AuxiliaryMethods :: changeComaToDot(string text)
+{
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
+    for(int i=0;i<text.length();i++)
+    if(text[i]==',')text[i]='.';
+    return text;
 }
 
 char AuxiliaryMethods :: getCharacter()

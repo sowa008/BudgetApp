@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
+#include <cstdlib>
 
 void XMLFileWithIncomes :: addIncomeToXMLFile()
 {
@@ -90,7 +91,7 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllIncomes()
         xml.FindElem( "source" );
         string strSource = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
+        float fAmount = stof( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;
@@ -135,7 +136,7 @@ vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
         xml.FindElem( "source" );
         string strSource = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
+        float fAmount = stof( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;

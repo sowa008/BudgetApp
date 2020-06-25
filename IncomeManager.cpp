@@ -2,6 +2,8 @@
 #include "IncomeManager.h"
 #include "XMLFileWithExpanses.h"
 
+#include <cstdlib>
+
 void IncomeManager :: addIncome()
 {
     XMLFileWithIncomes xmlFileWithIncomes(idOfTheLoggedUser, fileName);
@@ -35,12 +37,16 @@ MoneyRecord IncomeManager :: askDataOfNewIncome()
         newMoneyRecord.setDate(date);
 
     cout << "What is the amount? : ";
-    cin >> amount;
+
+    string amountString, amountProperString;
+
+    cin.ignore();
+    amountString = AuxiliaryMethods :: getLine();
+    amountProperString = AuxiliaryMethods :: changeComaToDot(amountString);
+    amount = stof(amountProperString);
     newMoneyRecord.setAmount(amount);
 
     cout << "What is the source of this income? : ";
-
-    cin.ignore();
     source = AuxiliaryMethods :: getLine();
     newMoneyRecord.setItem(source);
 

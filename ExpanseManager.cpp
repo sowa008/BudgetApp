@@ -35,12 +35,17 @@ MoneyRecord ExpanseManager :: askDataOfNewExpanse()
         newMoneyRecord.setDate(date);
 
     cout << "What is the amount? : ";
-    cin >> amount;
+
+    string amountString, amountProperString;
+
+    cin.ignore();
+    amountString = AuxiliaryMethods :: getLine();
+    amountProperString = AuxiliaryMethods :: changeComaToDot(amountString);
+    amount = stof(amountProperString);
     newMoneyRecord.setAmount(amount);
 
     cout << "Where did you spend the money? : ";
 
-    cin.ignore();
     source = AuxiliaryMethods :: getLine();
     newMoneyRecord.setItem(source);
 

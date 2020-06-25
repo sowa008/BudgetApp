@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
+#include <cstdlib>
 
 void XMLFileWithExpanses :: addExpanseToXMLFile()
 {
@@ -90,7 +91,7 @@ vector <MoneyRecord> XMLFileWithExpanses :: getAllExpanses()
         xml.FindElem( "item" );
         string strItem = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
+        float fAmount = stof( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;
@@ -135,7 +136,7 @@ vector <MoneyRecord> XMLFileWithExpanses :: getExpansesOfTheLoggedUser()
         xml.FindElem( "item" );
         string strItem = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
+        float fAmount = stof( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;
