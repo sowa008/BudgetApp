@@ -1,13 +1,13 @@
 #ifndef XMLFILEWITHUSERS_H
 #define XMLFILEWITHUSERS_H
 
+#include "User.h"
+#include "AuxiliaryMethods.h"
+
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <cstdlib>
-
-#include "User.h"
-#include "AuxiliaryMethods.h"
 
 using namespace std;
 

@@ -1,11 +1,13 @@
 #ifndef MONEYRECORDMANAGER_H
 #define MONEYRECORDMANAGER_H
-#include <iostream>
+
 #include "MoneyRecord.h"
 #include "XMLFileWithExpanses.h"
 #include "XMLFileWithIncomes.h"
 #include "AuxiliaryMethods.h"
 #include "DateManager.h"
+
+#include <iostream>
 
 using namespace std;
 

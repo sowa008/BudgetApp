@@ -1,10 +1,11 @@
 #ifndef PERSONALBUDGETMANAGER_H
 #define PERSONALBUDGETMANAGER_H
 
-#include <iostream>
 #include "UserManager.h"
 #include "IncomeManager.h"
 #include "ExpanseManager.h"
+
+#include <iostream>
 
 using namespace std;
 

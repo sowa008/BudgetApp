@@ -2,11 +2,12 @@
 #define DATEMANAGER_H
 
 #include "AuxiliaryMethods.h"
+#include "MoneyRecord.h"
+
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <algorithm>
-#include "MoneyRecord.h"
 #include <string>
 #include <windows.h>
 #include <winbase.h>

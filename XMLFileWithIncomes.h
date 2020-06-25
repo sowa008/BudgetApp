@@ -1,13 +1,13 @@
 #ifndef XMLFILEWITHINCOMES_H
 #define XMLFILEWITHINCOMES_H
 
-#include <iostream>
-#include <vector>
-#include <fstream>
-
 #include "MoneyRecord.h"
 #include "MoneyRecordManager.h"
 #include "AuxiliaryMethods.h"
+
+#include <iostream>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 

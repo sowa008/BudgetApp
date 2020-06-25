@@ -1,6 +1,5 @@
 #include "PersonalBudgetManager.h"
 #include "UserManager.h"
-
 #include "XMLFileWithIncomes.h"
 #include "XMLFileWithExpanses.h"
 
