@@ -1,5 +1,4 @@
 #include "XMLFileWithIncomes.h"
-#include "XMLFileWithExpanses.h"
 #include "MoneyRecordManager.h"
 #include "IncomeManager.h"
 #include "Markup.h"

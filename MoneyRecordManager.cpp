@@ -10,13 +10,13 @@ int MoneyRecordManager :: getIdOfNewMoneyRecord()
         return moneyRecords.back().getMoneyRecordId() + 1;
 }
 
-float MoneyRecordManager :: sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> moneyRecords)
+float MoneyRecordManager :: sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> newVector)
 {
     float sum = 0.00;
 
-    for (unsigned int i=0; i<moneyRecords.size(); i++)
+    for (unsigned int i=0; i<newVector.size(); i++)
     {
-        sum = sum + moneyRecords[i].amount;
+        sum = sum + newVector[i].amount;
     }
 
     return sum;
@@ -38,9 +38,7 @@ void MoneyRecordManager :: showVector(vector<MoneyRecord> newVector)
 {
     if (newVector.size()!=0)
     {
-    cout << endl;
     cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
-
     for (unsigned int i=0; i<newVector.size(); i++)
     {
         cout << " " << i+1 << "      ";

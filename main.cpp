@@ -24,10 +24,7 @@ int main()
             case '2':
                 personalBudgetManager.logInUser();
                 loggedUserId=personalBudgetManager.getIdOfLoggedUser();
-                break;
-            case '3':
-                personalBudgetManager.showAllUsers();
-                break;
+                break;;
             case '9':
                 exit(0);
                 break;
@@ -50,7 +47,7 @@ int main()
                 personalBudgetManager.addIncome();
                 break;
             case '2':
-                //personalBudgetManager.addExpanse();
+                personalBudgetManager.addExpanse();
                   break;
             case '3':
                 personalBudgetManager.showTheBalanceOfTheCurrentMonth();

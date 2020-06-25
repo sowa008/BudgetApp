@@ -26,9 +26,9 @@ public:
     }
 
     int getIdOfNewMoneyRecord();
-    float sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> moneyRecords);
-    vector <MoneyRecord> sortVectorAccordingToDates(vector<MoneyRecord> moneyRecords);
-    void showVector(vector<MoneyRecord> moneyRecords);
+    float sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> newVector);
+    vector <MoneyRecord> sortVectorAccordingToDates(vector<MoneyRecord> newVector);
+    void showVector(vector<MoneyRecord> newVector);
 };
 
 #endif

@@ -12,10 +12,10 @@ void PersonalBudgetManager :: addIncome()
     incomeManager->addIncome();
 }
 
-/*void PersonalBudgetManager :: addExpanse()
+void PersonalBudgetManager :: addExpanse()
 {
-    xmlFileWithExpanses->addExpanse();
-}*/
+    expanseManager->addExpanse();
+}
 
 void PersonalBudgetManager :: registerUser()
 {
@@ -28,8 +28,10 @@ void PersonalBudgetManager :: logInUser()
     if (userManager.isUserLoggedIn())
     {
         xmlFileWithIncomes = new XMLFileWithIncomes (userManager.getIdOfLoggedUser(), AuxiliaryMethods::getIncomesFileName());
+        xmlFileWithExpanses = new XMLFileWithExpanses (userManager.getIdOfLoggedUser(), AuxiliaryMethods::getExpansesFileName());
+
         incomeManager = new IncomeManager (userManager.getIdOfLoggedUser());
-        //xmlFileWithExpanses
+        expanseManager = new ExpanseManager (userManager.getIdOfLoggedUser());
     }
 }
 
@@ -62,7 +64,6 @@ char PersonalBudgetManager :: chooseOneOptionFromMainMenu()
     cout << "---------------------------" << endl;
     cout << "1. Register" << endl;
     cout << "2. Log in" << endl;
-    cout << "3. Show all users" << endl;
     cout << "9. Quit" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
@@ -94,13 +95,25 @@ char PersonalBudgetManager :: chooseOneOptionFromUserMenu()
 
 void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 {
+    cout << endl;
+    cout << "Incomes:" << endl;
     vector <MoneyRecord> incomesOfTheCurrentMonth = incomeManager->showTheIncomesOfTheCurrentMonth();
     incomeManager->showVector(incomesOfTheCurrentMonth);
 
-    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheCurrentMonth);
+    cout << endl;
+    cout << "Expanses:" << endl;
+    vector <MoneyRecord> expansesOfTheCurrentMonth = expanseManager->showTheExpansesOfTheCurrentMonth();
+    expanseManager->showVector(expansesOfTheCurrentMonth);
+
+    float sumOfIncomes = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheCurrentMonth);
+    float sumOfExpanses = expanseManager->sumTheMoneyRecordsOfTheLoggedUser(expansesOfTheCurrentMonth);
 
     cout << endl;
-    cout << "Sum of your incomes from the current month: " << setprecision(2) << fixed << sum << endl;
+    cout << "Balance:" << endl;
+    cout << "Sum of your incomes from the current month: " << setprecision(2) << fixed << sumOfIncomes << endl;
+    cout << "Sum of your expanses from the current month: " << setprecision(2) << fixed << sumOfExpanses << endl;
+    cout << endl;
+    cout << "The balance of the current month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
 
     system("pause");
@@ -108,13 +121,25 @@ void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 
 void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
 {
+    cout << endl;
+    cout << "Incomes:" << endl;
     vector <MoneyRecord> incomesOfThePreviousMonth = incomeManager->showTheIncomesOfThePreviousMonth();
     incomeManager->showVector(incomesOfThePreviousMonth);
 
-    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfThePreviousMonth);
+    cout << endl;
+    cout << "Expanses:" << endl;
+    vector <MoneyRecord> expansesOfThePreviousMonth = expanseManager->showTheExpansesOfThePreviousMonth();
+    expanseManager->showVector(expansesOfThePreviousMonth);
+
+    float sumOfIncomes = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfThePreviousMonth);
+    float sumOfExpanses = expanseManager->sumTheMoneyRecordsOfTheLoggedUser(expansesOfThePreviousMonth);
 
     cout << endl;
-    cout << "Sum of your incomes from the previous month: " << setprecision(2) << fixed << sum << endl;
+    cout << "Balance:" << endl;
+    cout << "Sum of your incomes from the previous month: " << setprecision(2) << fixed << sumOfIncomes << endl;
+    cout << "Sum of your expanses from the previous month: " << setprecision(2) << fixed << sumOfExpanses << endl;
+    cout << endl;
+    cout << "The balance of the previous month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
 
     system("pause");
@@ -122,13 +147,28 @@ void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
 
 void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
 {
+    cout << endl;
+    cout << "Incomes:" << endl;
+
+    //najpierw pyta o zakres dat, potem pokazuje wektor
+
     vector <MoneyRecord> incomesOfTheSelectedPeriod = incomeManager->showTheIncomesOfTheSelectedPeriod();
     incomeManager->showVector(incomesOfTheSelectedPeriod);
 
-    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheSelectedPeriod);
+    cout << endl;
+    cout << "Expanses:" << endl;
+    vector <MoneyRecord> expansesOfTheSelectedPeriod = expanseManager->showTheExpansesOfTheSelectedPeriod();
+    expanseManager->showVector(expansesOfTheSelectedPeriod);
+
+    float sumOfIncomes = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheSelectedPeriod);
+    float sumOfExpanses = expanseManager->sumTheMoneyRecordsOfTheLoggedUser(expansesOfTheSelectedPeriod);
 
     cout << endl;
-    cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sum << endl;
+    cout << "Balance:" << endl;
+    cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sumOfIncomes << endl;
+    cout << "Sum of your expanses from the selected period: " << setprecision(2) << fixed << sumOfExpanses << endl;
+    cout << endl;
+    cout << "The balance of the previous month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
 
     system("pause");

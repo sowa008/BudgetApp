@@ -1,125 +1,152 @@
+#include "DateManager.h"
 #include "ExpanseManager.h"
-#include "AuxiliaryMethods.h"
+#include "XMLFileWithExpanses.h"
 
-int ExpanseManager :: getIdOfNewExpanse()
+void ExpanseManager :: addExpanse()
 {
-    if (expanses.empty() == true)
-        return 1;
-    else
-        return expanses.back().getMoneyRecordId() + 1;
+    XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
+    xmlFileWithExpanses.addExpanseToXMLFile();
+    cout << "You have added an expanse" << endl;
+    system("pause");
 }
 
 MoneyRecord ExpanseManager :: askDataOfNewExpanse()
 {
-    MoneyRecord newExpanse;
-
-    newExpanse.setMoneyRecordId(getIdOfNewExpanse());
-
-    newExpanse.setUserId(getIdOfTheLoggedUser());
+    newMoneyRecord.setMoneyRecordId(getIdOfNewMoneyRecord());
 
     int date;
-    string item;
+    string source;
     float amount;
 
-    cin.sync();
-
         string answer;
-        cout << "Is it expanse from today? Y/N" << endl;
+        cout << "Is it expanse done today? Y/N" << endl;
         cin >> answer;
 
         if (answer == "Y" || answer == "y")
         {
             DateManager :: showTodayDate();
-            date = DateManager :: turnDateToInt();
+            date = DateManager :: turnTodayDateToInt();
         }
         else
         {
             date = DateManager :: validateDate();
         }
 
-        newExpanse.setDate(date);
+        newMoneyRecord.setDate(date);
 
-    cout << "What did you spend money for: ";
-    cin >> item; //lepiej getlinem, ale nie dziala
-    newExpanse.setItem(item);
-
-    cout << "What amount did you spend? : ";
+    cout << "What is the amount? : ";
     cin >> amount;
-    newExpanse.setAmount(amount);
+    newMoneyRecord.setAmount(amount);
 
-    return newExpanse;
+    cout << "Where did you spend the money? : ";
+
+    cin.ignore();
+    source = AuxiliaryMethods :: getLine();
+    newMoneyRecord.setItem(source);
+
+    return newMoneyRecord;
 }
 
-void ExpanseManager :: addExpanseToXMLFile(string fileName)
+int ExpanseManager :: getIdOfTheLastExpanse()
 {
     fstream file;
     int lastExpanseId = 0;
-    int expanseId=0;
-    int userId=0;
-    int date=0;
-    string item="";
-    float amount=0;
-
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
-
-    MoneyRecord newExpanse = moneyRecordManager.askDataOfNewExpanse();
+    XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
 
     file.open(fileName.c_str(), ios::out | ios::app);
-
     if (file.good() == true)
     {
         if (AuxiliaryMethods::isThisFileEmpty(file) == true)
         {
-            lastMoneyRecordId=0;;
+            lastExpanseId=0;
         }
         else
         {
-            vector <MoneyRecord> allMoneyRecords = getAllMoneyRecords(fileName);
-            lastMoneyRecordId=allMoneyRecords.back().moneyRecordId;
+            vector <MoneyRecord> allExpanses = xmlFileWithExpanses.getAllExpanses();
+            lastExpanseId=allExpanses.back().moneyRecordId;
         }
     }
     else
         cout << "Could not open the file " << fileName << " and save the data." << endl;
     file.close();
 
-    cout << "Id ostatniego wydatku przed dodaniem nowego: " << lastExpanseId << endl;
+    return lastExpanseId;
+}
 
-    newExpanse.moneyRecordId = lastExpanseId+1;
+vector <MoneyRecord> ExpanseManager :: showTheExpansesOfTheCurrentMonth()
+{
+    XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
+    vector <MoneyRecord> vectorWithExpansesOfCurrentMonth;
+    expansesOfTheLoggedUser = xmlFileWithExpanses.getExpansesOfTheLoggedUser();
+    expansesOfTheLoggedUser = sortVectorAccordingToDates(expansesOfTheLoggedUser);
 
-    CMarkup xml;
+    int currentMonth = DateManager :: getTheCurrentMonth();
+    int currentYear = DateManager :: getTheCurrentYear();
+    int monthOfExpanse, yearOfExpanse;
 
-    xml.Load(fileName);
-
-    if (xml.FindElem() == false)
+    for (unsigned int i=0; i<expansesOfTheLoggedUser.size(); i++)
     {
-        xml.AddElem("expanses");
+        monthOfExpanse = DateManager :: whatIsTheMonthOfThisDate(expansesOfTheLoggedUser[i].date);
+        yearOfExpanse = DateManager :: whatIsTheYearOfThisDate(expansesOfTheLoggedUser[i].date);
+
+        if ((monthOfExpanse==currentMonth) && (yearOfExpanse==currentYear))
+        {
+            vectorWithExpansesOfCurrentMonth.push_back(expansesOfTheLoggedUser[i]);
+        }
+    }
+    return vectorWithExpansesOfCurrentMonth;
+}
+
+vector <MoneyRecord> ExpanseManager :: showTheExpansesOfThePreviousMonth()
+{
+    XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
+    vector <MoneyRecord> vectorWithExpansesOfPreviousMonth;
+    expansesOfTheLoggedUser = xmlFileWithExpanses.getExpansesOfTheLoggedUser();
+    expansesOfTheLoggedUser = sortVectorAccordingToDates(expansesOfTheLoggedUser);
+
+    int currentMonth = DateManager :: getTheCurrentMonth();
+    int currentYear = DateManager :: getTheCurrentYear();
+    int monthOfExpanse, yearOfExpanse;
+
+    for (unsigned int i=0; i<expansesOfTheLoggedUser.size(); i++)
+    {
+        monthOfExpanse = DateManager :: whatIsTheMonthOfThisDate(expansesOfTheLoggedUser[i].date);
+        yearOfExpanse = DateManager :: whatIsTheYearOfThisDate(expansesOfTheLoggedUser[i].date);
+
+        if( ((monthOfExpanse==currentMonth-1) && (yearOfExpanse==currentYear)) || ((monthOfExpanse==12) && (currentMonth==1) && (yearOfExpanse==currentYear-1)) )
+        {
+            vectorWithExpansesOfPreviousMonth.push_back(expansesOfTheLoggedUser[i]);
+        }
     }
 
-    //int moneyRecordId=0;
-    //int userId=0;
-    //int date=0;
-    //string item="";
-    //float amount=0;
+    return vectorWithExpansesOfPreviousMonth;
+}
 
-    xml.IntoElem();
-    xml.AddElem( "expanse" );
-    xml.IntoElem();
-    xml.AddElem( "expanseId", newExpanse.moneyRecordId );
-    xml.AddElem( "userId", idOfTheLoggedUser );
-    xml.AddElem( "date", newExpanse.date );
-    xml.AddElem( "item", newExpanse.item );
-    xml.AddElem( "amount", newExpanse.amount );
+vector <MoneyRecord> ExpanseManager :: showTheExpansesOfTheSelectedPeriod()
+{
+    cout << "From: ";
+    int dateBegin = DateManager :: validateDate();
 
-    if (xml.FindElem() == false)
+    cout << "To: ";
+    int dateEnd = DateManager :: validateDate();
+
+    cout << "Selected period: " << endl;
+    cout << "From: " << DateManager :: turnDateToStringWithHyphens(dateBegin) << endl;
+    cout << "To: " << DateManager :: turnDateToStringWithHyphens(dateEnd) << endl;
+
+    XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
+    vector <MoneyRecord> vectorWithExpansesOfTheSelectedPeriod;
+    expansesOfTheLoggedUser = xmlFileWithExpanses.getExpansesOfTheLoggedUser();
+    expansesOfTheLoggedUser = sortVectorAccordingToDates(expansesOfTheLoggedUser);
+
+    for (unsigned int i=0; i<expansesOfTheLoggedUser.size(); i++)
     {
-        xml.AddElem("expanses");
+        if( (expansesOfTheLoggedUser[i].date>=dateBegin) && (expansesOfTheLoggedUser[i].date<=dateEnd) )
+        {
+            vectorWithExpansesOfTheSelectedPeriod.push_back(expansesOfTheLoggedUser[i]);
+        }
     }
 
-    string csXML = xml.GetDoc();
-
-    file.open(fileName, ios::out);
-
-    file << csXML << endl;
-
-    file.close();
+    return vectorWithExpansesOfTheSelectedPeriod;
 }
