@@ -1,5 +1,6 @@
 #include "PersonalBudgetManager.h"
 #include "UserManager.h"
+#include "IncomeManager.h"
 #include "XMLFileWithIncomes.h"
 #include "XMLFileWithExpanses.h"
 
@@ -8,7 +9,7 @@
 
 void PersonalBudgetManager :: addIncome()
 {
-    xmlFileWithIncomes->addIncome();
+    incomeManager->addIncome();
 }
 
 /*void PersonalBudgetManager :: addExpanse()
@@ -27,6 +28,7 @@ void PersonalBudgetManager :: logInUser()
     if (userManager.isUserLoggedIn())
     {
         xmlFileWithIncomes = new XMLFileWithIncomes (userManager.getIdOfLoggedUser(), AuxiliaryMethods::getIncomesFileName());
+        incomeManager = new IncomeManager (userManager.getIdOfLoggedUser());
         //xmlFileWithExpanses
     }
 }
@@ -92,10 +94,10 @@ char PersonalBudgetManager :: chooseOneOptionFromUserMenu()
 
 void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 {
-    vector <MoneyRecord> incomesOfTheCurrentMonth = xmlFileWithIncomes->showTheIncomesOfTheCurrentMonth();
-    xmlFileWithIncomes->showVector(incomesOfTheCurrentMonth);
+    vector <MoneyRecord> incomesOfTheCurrentMonth = incomeManager->showTheIncomesOfTheCurrentMonth();
+    incomeManager->showVector(incomesOfTheCurrentMonth);
 
-    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheCurrentMonth);
+    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheCurrentMonth);
 
     cout << endl;
     cout << "Sum of your incomes from the current month: " << setprecision(2) << fixed << sum << endl;
@@ -106,10 +108,10 @@ void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
 
 void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
 {
-    vector <MoneyRecord> incomesOfThePreviousMonth = xmlFileWithIncomes->showTheIncomesOfThePreviousMonth();
-    xmlFileWithIncomes->showVector(incomesOfThePreviousMonth);
+    vector <MoneyRecord> incomesOfThePreviousMonth = incomeManager->showTheIncomesOfThePreviousMonth();
+    incomeManager->showVector(incomesOfThePreviousMonth);
 
-    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfThePreviousMonth);
+    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfThePreviousMonth);
 
     cout << endl;
     cout << "Sum of your incomes from the previous month: " << setprecision(2) << fixed << sum << endl;
@@ -120,10 +122,10 @@ void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
 
 void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
 {
-    vector <MoneyRecord> incomesOfTheSelectedPeriod = xmlFileWithIncomes->showTheIncomesOfTheSelectedPeriod();
-    xmlFileWithIncomes->showVector(incomesOfTheSelectedPeriod);
+    vector <MoneyRecord> incomesOfTheSelectedPeriod = incomeManager->showTheIncomesOfTheSelectedPeriod();
+    incomeManager->showVector(incomesOfTheSelectedPeriod);
 
-    float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheSelectedPeriod);
+    float sum = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheSelectedPeriod);
 
     cout << endl;
     cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sum << endl;

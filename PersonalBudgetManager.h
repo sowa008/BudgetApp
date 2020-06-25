@@ -19,6 +19,7 @@ class PersonalBudgetManager
 
     XMLFileWithIncomes *xmlFileWithIncomes;
     XMLFileWithExpanses *xmlFileWithExpanses;
+    IncomeManager *incomeManager;
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
 
@@ -26,6 +27,7 @@ public:
 
     PersonalBudgetManager()
     {
+    incomeManager=NULL;
     xmlFileWithIncomes=NULL;
 //    xmlFileWithExpanses=NULL;
     };
@@ -33,8 +35,10 @@ public:
     ~PersonalBudgetManager()
     {
     delete xmlFileWithIncomes;
+    delete incomeManager;
 //    delete xmlFileWithExpanses;
     xmlFileWithIncomes=NULL;
+    incomeManager=NULL;
 //    xmlFileWithExpanses=NULL;;
     }
 

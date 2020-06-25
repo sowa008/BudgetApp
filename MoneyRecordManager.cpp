@@ -1,5 +1,7 @@
 #include "MoneyRecordManager.h"
 
+#include<iomanip>
+
 int MoneyRecordManager :: getIdOfNewMoneyRecord()
 {
     if (moneyRecords.empty() == true)
@@ -8,78 +10,45 @@ int MoneyRecordManager :: getIdOfNewMoneyRecord()
         return moneyRecords.back().getMoneyRecordId() + 1;
 }
 
-MoneyRecord MoneyRecordManager :: askDataOfNewIncome()
+float MoneyRecordManager :: sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> moneyRecords)
 {
-    newMoneyRecord.setMoneyRecordId(getIdOfNewMoneyRecord());
+    float sum = 0.00;
 
-    int date;
-    string source;
-    float amount;
+    for (unsigned int i=0; i<moneyRecords.size(); i++)
+    {
+        sum = sum + moneyRecords[i].amount;
+    }
 
-        string answer;
-        cout << "Is it income from today? Y/N" << endl;
-        cin >> answer;
-
-        if (answer == "Y" || answer == "y")
-        {
-            DateManager :: showTodayDate();
-            date = DateManager :: turnTodayDateToInt();
-        }
-        else
-        {
-            date = DateManager :: validateDate();
-        }
-
-        newMoneyRecord.setDate(date);
-
-    cout << "What is the amount? : ";
-    cin >> amount;
-    newMoneyRecord.setAmount(amount);
-
-    cout << "What is the source of this income? : ";
-
-    cin.ignore();
-    source = AuxiliaryMethods :: getLine();
-    newMoneyRecord.setItem(source);
-
-    return newMoneyRecord;
+    return sum;
 }
 
-MoneyRecord MoneyRecordManager :: askDataOfNewExpanse()
+bool compareDates( const MoneyRecord & L, const MoneyRecord & R )
 {
-    newMoneyRecord.setMoneyRecordId(getIdOfNewMoneyRecord());
-
-    int date;
-    string item;
-    float amount;
-
-        string answer;
-        cout << "Is it expanse from today? Y/N" << endl;
-        cin >> answer;
-
-        if (answer == "Y" || answer == "y")
-        {
-            DateManager :: showTodayDate();
-            date = DateManager :: turnTodayDateToInt();
-        }
-        else
-        {
-            date = DateManager :: validateDate();
-        }
-
-        newMoneyRecord.setDate(date);
-
-    cout << "What is the amount? : ";
-    cin >> amount;
-    newMoneyRecord.setAmount(amount);
-
-    cout << "Where did you spend the money? : ";
-
-    cin.ignore();
-    item = AuxiliaryMethods :: getLine();
-    newMoneyRecord.setItem(item);
-
-    return newMoneyRecord;
+    return (L.date > R.date);
 }
 
+vector <MoneyRecord> MoneyRecordManager :: sortVectorAccordingToDates(vector<MoneyRecord> newVector)
+{
+    sort(newVector.begin(), newVector.end(), compareDates);
 
+    return newVector;
+}
+
+void MoneyRecordManager :: showVector(vector<MoneyRecord> newVector)
+{
+    if (newVector.size()!=0)
+    {
+    cout << endl;
+    cout << "No.  IncomeId.    Date       Amount     Source of Income  " << endl;
+
+    for (unsigned int i=0; i<newVector.size(); i++)
+    {
+        cout << " " << i+1 << "      ";
+        cout << newVector[i].moneyRecordId << "      ";
+        cout << DateManager :: turnDateToStringWithHyphens(newVector[i].date) << "    ";
+        cout << setprecision(2) << fixed << newVector[i].amount << "     ";
+        cout << newVector[i].item << endl;
+    }
+    }
+    else cout << endl << "No data to display!" << endl << endl;
+}

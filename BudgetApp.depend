@@ -56,14 +56,15 @@
 	<fstream>
 	<cstdlib>
 
-1593083130 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+1593089561 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
 	"PersonalBudgetManager.h"
 	"UserManager.h"
+	"IncomeManager.h"
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	<iomanip>
 
-1593083130 c:\praca\programy\budgetapp\personalbudgetmanager.h
+1593086392 c:\praca\programy\budgetapp\personalbudgetmanager.h
 	"UserManager.h"
 	"IncomeManager.h"
 	"ExpanseManager.h"
@@ -77,7 +78,7 @@
 	"UserManager.h"
 	"XMLFileWithUsers.h"
 
-1593083130 c:\praca\programy\budgetapp\moneyrecordmanager.h
+1593089791 c:\praca\programy\budgetapp\moneyrecordmanager.h
 	"MoneyRecord.h"
 	"XMLFileWithExpanses.h"
 	"XMLFileWithIncomes.h"
@@ -85,8 +86,9 @@
 	"DateManager.h"
 	<iostream>
 
-1592938194 source:c:\praca\programy\budgetapp\moneyrecordmanager.cpp
+1593089522 source:c:\praca\programy\budgetapp\moneyrecordmanager.cpp
 	"MoneyRecordManager.h"
+	<iomanip>
 
 1591713773 source:c:\praca\programy\budgetapp\income.cpp
 	"Income.h"
@@ -95,12 +97,14 @@
 	<iostream>
 	<vector>
 
-1592324749 source:c:\praca\programy\budgetapp\incomemanager.cpp
+1593089120 source:c:\praca\programy\budgetapp\incomemanager.cpp
+	"DateManager.h"
 	"IncomeManager.h"
-	"AuxiliaryMethods.h"
+	"XMLFileWithExpanses.h"
 
-1592324931 c:\praca\programy\budgetapp\incomemanager.h
+1593089322 c:\praca\programy\budgetapp\incomemanager.h
 	"MoneyRecordManager.h"
+	"MoneyRecord.h"
 	<iostream>
 
 1592913457 source:c:\praca\programy\budgetapp\xmlfilewithmoneyrecords.cpp
@@ -151,7 +155,7 @@
 
 1593017586 c:\praca\programy\budgetapp\xmlfilewithexpanses.h
 
-1593083130 c:\praca\programy\budgetapp\xmlfilewithincomes.h
+1593089498 c:\praca\programy\budgetapp\xmlfilewithincomes.h
 	"MoneyRecord.h"
 	"MoneyRecordManager.h"
 	"AuxiliaryMethods.h"
@@ -161,10 +165,11 @@
 
 1593017586 source:c:\praca\programy\budgetapp\xmlfilewithexpanses.cpp
 
-1593083197 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
+1593089498 source:c:\praca\programy\budgetapp\xmlfilewithincomes.cpp
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	"MoneyRecordManager.h"
+	"IncomeManager.h"
 	"Markup.h"
 	"MoneyRecord.h"
 	"UserManager.h"

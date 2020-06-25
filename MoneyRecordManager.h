@@ -13,12 +13,10 @@ using namespace std;
 
 class MoneyRecordManager
 {
+
+protected:
     MoneyRecord newMoneyRecord;
-
     int idOfTheLoggedUser;
-
-    vector <MoneyRecord> incomes;
-    vector <MoneyRecord> expanses;
     vector <MoneyRecord> moneyRecords;
 
 public:
@@ -28,11 +26,9 @@ public:
     }
 
     int getIdOfNewMoneyRecord();
-
-    MoneyRecord askDataOfNewIncome();
-    MoneyRecord askDataOfNewExpanse();
-    int getIdOfTheLastMoneyRecord(string fileName);
-    vector <MoneyRecord> getAllMoneyRecords(string fileName);
+    float sumTheMoneyRecordsOfTheLoggedUser(vector<MoneyRecord> moneyRecords);
+    vector <MoneyRecord> sortVectorAccordingToDates(vector<MoneyRecord> moneyRecords);
+    void showVector(vector<MoneyRecord> moneyRecords);
 };
 
 #endif

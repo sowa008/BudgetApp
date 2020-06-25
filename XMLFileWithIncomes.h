@@ -26,17 +26,9 @@ public:
         fileName = FileName;
     }
 
-    void addIncome();
-    int getIdOfTheLastIncome();
     void addIncomeToXMLFile();
     vector <MoneyRecord> getAllIncomes();
     vector <MoneyRecord> getIncomesOfTheLoggedUser();
-    vector <MoneyRecord> sortVectorAccordingToDates();
-    float sumTheIncomesOfTheLoggedUser(vector<MoneyRecord> newVector);
-    vector <MoneyRecord> showTheIncomesOfTheCurrentMonth();
-    vector <MoneyRecord> showTheIncomesOfThePreviousMonth();
-    vector <MoneyRecord> showTheIncomesOfTheSelectedPeriod();
-    void showVector(vector<MoneyRecord> newVector);
 };
 
 #endif
