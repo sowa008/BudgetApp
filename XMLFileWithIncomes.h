@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <cstdlib>
 
 #include "MoneyRecord.h"
 #include "MoneyRecordManager.h"
@@ -33,7 +32,6 @@ public:
     vector <MoneyRecord> getAllIncomes();
     vector <MoneyRecord> getIncomesOfTheLoggedUser();
     vector <MoneyRecord> sortVectorAccordingToDates();
-    //void readIncomesOfTheLoggedUserFromXMLFile();
     float sumTheIncomesOfTheLoggedUser(vector<MoneyRecord> newVector);
     vector <MoneyRecord> showTheIncomesOfTheCurrentMonth();
     vector <MoneyRecord> showTheIncomesOfThePreviousMonth();

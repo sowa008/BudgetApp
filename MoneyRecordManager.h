@@ -11,10 +11,6 @@ using namespace std;
 
 class MoneyRecordManager
 {
-
-//    XMLFileWithExpanses xmlFileWithExpanses(int IdOfTheLoggedUser);
-//    XMLFileWithIncomes xmlFileWithIncomes(int IdOfTheLoggedUser);
-
     MoneyRecord newMoneyRecord;
 
     int idOfTheLoggedUser;
@@ -27,8 +23,6 @@ public:
     MoneyRecordManager(int IdOfTheLoggedUser)
     {
         idOfTheLoggedUser = IdOfTheLoggedUser;
-        //incomes = xmlFileWithIncomes.getAllMoneyRecords(AuxiliaryMethods::getIncomesFileName());
-        //expanses = xmlFileWithExpanses.getAllMoneyRecords(AuxiliaryMethods::getExpansesFileName());
     }
 
     int getIdOfNewMoneyRecord();
@@ -37,10 +31,6 @@ public:
     MoneyRecord askDataOfNewExpanse();
     int getIdOfTheLastMoneyRecord(string fileName);
     vector <MoneyRecord> getAllMoneyRecords(string fileName);
-
-    //void addMoneyRecord(string fileName);
-    //void addIncome(string fileName);
-    //void addExpanse(string fileName);
 };
 
 #endif

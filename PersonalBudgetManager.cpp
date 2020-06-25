@@ -4,6 +4,8 @@
 #include "XMLFileWithIncomes.h"
 #include "XMLFileWithExpanses.h"
 
+#include <iomanip>
+
 
 void PersonalBudgetManager :: addIncome()
 {
@@ -33,8 +35,6 @@ void PersonalBudgetManager :: logInUser()
 void PersonalBudgetManager :: logOutUser()
 {
     userManager.logOutUser();
-    //delete adresatManager;
-    //adresatManager = NULL;
 }
 
 int PersonalBudgetManager :: getIdOfLoggedUser()
@@ -51,36 +51,6 @@ void PersonalBudgetManager :: changePassword()
 {
     userManager.changePassword();
 }
-
-//void PersonalBudgetManager :: usunAdresata()
-//{
-//    adresatManager->usunAdresata();
-//}
-
-//void PersonalBudgetManager :: edytujAdresata()
-//{
-//    adresatManager->edytujAdresata();
-//}
-
-//int PersonalBudgetManager :: podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(int idUsuwanegoAdresata, int idOstatniegoAdresata)
-//{
-//    return adresatManager->podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsuwanegoAdresata, idOstatniegoAdresata);
-//}
-
-//void PersonalBudgetManager :: wyswietlWszystkichAdresatowZalogowanegoUzytkownika()
-//{
-//    adresatManager->wyswietlWszystkichAdresatowZalogowanegoUzytkownika();
-//}
-
-//void PersonalBudgetManager :: wyszukajAdresatowPoImieniu()
-//{
-//    adresatManager->wyszukajAdresatowPoImieniu();
-//}
-
-//void PersonalBudgetManager :: wyszukajAdresatowPoNazwisku()
-//{
-//    adresatManager->wyszukajAdresatowPoNazwisku();
-//}
 
 char PersonalBudgetManager :: chooseOneOptionFromMainMenu()
 {
@@ -129,7 +99,7 @@ void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
     float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheCurrentMonth);
 
     cout << endl;
-    cout << "Sum of your incomes from the current month: " << sum << endl;
+    cout << "Sum of your incomes from the current month: " << setprecision(2) << fixed << sum << endl;
     cout << endl;
 
     system("pause");
@@ -143,7 +113,7 @@ void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
     float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfThePreviousMonth);
 
     cout << endl;
-    cout << "Sum of your incomes from the previous month: " << sum << endl;
+    cout << "Sum of your incomes from the previous month: " << setprecision(2) << fixed << sum << endl;
     cout << endl;
 
     system("pause");
@@ -157,7 +127,7 @@ void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
     float sum = xmlFileWithIncomes->sumTheIncomesOfTheLoggedUser(incomesOfTheSelectedPeriod);
 
     cout << endl;
-    cout << "Sum of your incomes from the selected period: " << sum << endl;
+    cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sum << endl;
     cout << endl;
 
     system("pause");

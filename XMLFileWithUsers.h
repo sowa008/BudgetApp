@@ -13,7 +13,6 @@ using namespace std;
 
 class XMLFileWithUsers
 {
-    //const string USERS_FILE_NAME;
 
 public:
     void addUserToXMLFile(string fileName);

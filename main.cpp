@@ -1,16 +1,12 @@
 #include <iostream>
 #include "PersonalBudgetManager.h"
-#include "XMLFileWithExpanses.h"
-#include "XMLFileWithIncomes.h"
 
 using namespace std;
 
 int main()
 {
     int loggedUserId = 0;
-    //int lastMoneyRecordId = 0;
 
-    //PersonalBudgetManager personalBudgetManager("Users.xml", "Incomes.xml", "Expanses.xml");
     PersonalBudgetManager personalBudgetManager;
 
     while (true)
@@ -52,19 +48,18 @@ int main()
             case '1':
                 personalBudgetManager.addIncome();
                 break;
-              case '2':
+            case '2':
                 //personalBudgetManager.addExpanse();
                   break;
-              case '3':
-                 personalBudgetManager.showTheBalanceOfTheCurrentMonth();
-                  break;
-              case '4':
-                 personalBudgetManager.showTheBalanceOfThePreviousMonth();
-                  break;
-              case '5':
-                 personalBudgetManager.showTheBalanceOfTheSelectedPeriod();
-                  break;
-  ///////////////////////////////////////////////////////////////////////////////////////////////
+            case '3':
+                personalBudgetManager.showTheBalanceOfTheCurrentMonth();
+                break;
+            case '4':
+                personalBudgetManager.showTheBalanceOfThePreviousMonth();
+                break;
+            case '5':
+                personalBudgetManager.showTheBalanceOfTheSelectedPeriod();
+                break;
             case '7':
                 personalBudgetManager.changePassword();
                 break;

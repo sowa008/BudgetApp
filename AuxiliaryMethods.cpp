@@ -33,6 +33,14 @@ string AuxiliaryMethods :: convertFloatToString(float number)
     return out.str();
 }
 
+float AuxiliaryMethods :: convertStringToFloat(string text)
+{
+    float convertedString;
+    istringstream iss(text);
+    iss >> convertedString;
+    return convertedString;
+}
+
 char AuxiliaryMethods :: getCharacter()
 {
     string entry = "";

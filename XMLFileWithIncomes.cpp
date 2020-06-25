@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
 void XMLFileWithIncomes :: addIncome()
 {
@@ -19,11 +20,9 @@ int XMLFileWithIncomes :: getIdOfTheLastIncome()
 {
     fstream file;
     int lastIncomeId = 0;
-
     MoneyRecordManager moneyRecordManager(idOfTheLoggedUser);
 
     file.open(fileName.c_str(), ios::out | ios::app);
-
     if (file.good() == true)
     {
         if (AuxiliaryMethods::isThisFileEmpty(file) == true)
@@ -88,7 +87,7 @@ void XMLFileWithIncomes :: addIncomeToXMLFile()
 
     file.open(fileName, ios::out);
 
-    file << csXML << endl; //tu pewnie wykrzacza sie zapis amount - zmiennoprzecinkowa=float
+    file << csXML << endl;
 
     file.close();
 }
@@ -113,16 +112,16 @@ vector <MoneyRecord> XMLFileWithIncomes :: getAllIncomes()
 
         xml.IntoElem();
         xml.FindElem( "incomeId" );
-        int nMoneyRecordId = atoi( MCD_2PCSZ(xml.GetData()) );
+        int nMoneyRecordId = AuxiliaryMethods :: convertStringToInt( MCD_2PCSZ(xml.GetData()) );
         xml.FindElem( "userId" );
-        int nUserId = atoi( MCD_2PCSZ(xml.GetData()) );
+        int nUserId = AuxiliaryMethods :: convertStringToInt( MCD_2PCSZ(xml.GetData()) );
         xml.FindElem( "date" );
         string strDate = xml.GetData();
         int nDate = DateManager :: convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(strDate);
         xml.FindElem( "source" );
         string strSource = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = stof( xml.GetData() );
+        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;
@@ -158,16 +157,16 @@ vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
 
         xml.IntoElem();
         xml.FindElem( "incomeId" );
-        int nMoneyRecordId = atoi( MCD_2PCSZ(xml.GetData()) );
+        int nMoneyRecordId = AuxiliaryMethods :: convertStringToInt( MCD_2PCSZ(xml.GetData()) );
         xml.FindElem( "userId" );
-        int nUserId = atoi( MCD_2PCSZ(xml.GetData()) );
+        int nUserId = AuxiliaryMethods :: convertStringToInt( MCD_2PCSZ(xml.GetData()) );
         xml.FindElem( "date" );
         string strDate = xml.GetData();
         int nDate = DateManager :: convertDateFromStringFormatRRRRMMDDWithHyphensToIntFormatRRRRMMDD(strDate);
         xml.FindElem( "source" );
         string strSource = xml.GetData();
         xml.FindElem( "amount" );
-        float fAmount = stof( xml.GetData() );
+        float fAmount = AuxiliaryMethods :: convertStringToFloat( xml.GetData() );
         xml.OutOfElem();
 
         newMoneyRecord.moneyRecordId = nMoneyRecordId;
@@ -232,7 +231,7 @@ vector <MoneyRecord> XMLFileWithIncomes :: getIncomesOfTheLoggedUser()
 
 float XMLFileWithIncomes :: sumTheIncomesOfTheLoggedUser(vector<MoneyRecord> newVector)
 {
-    float sum = 0.0;
+    float sum = 0.00;
 
     for (int i=0; i<newVector.size(); i++)
     {
@@ -339,7 +338,7 @@ void XMLFileWithIncomes :: showVector(vector<MoneyRecord> newVector)
         cout << " " << i+1 << "      ";
         cout << newVector[i].moneyRecordId << "      ";
         cout << DateManager :: turnDateToStringWithHyphens(newVector[i].date) << "    ";
-        cout << newVector[i].amount << "     ";
+        cout << setprecision( 2 ) << fixed << newVector[i].amount << "     ";
         cout << newVector[i].item << endl;
     }
     }

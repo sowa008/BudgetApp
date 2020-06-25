@@ -148,7 +148,6 @@ bool DateManager :: validateYear(int year, int month, int day)
             else if (day==st.wDay)
             {
                 cout << "This is today :)" << endl;
-                //exit(0);
                 return true;
             }
         }

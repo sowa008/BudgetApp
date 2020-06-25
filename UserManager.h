@@ -14,7 +14,6 @@ using namespace std;
 
 class UserManager
 {
-    //const string USERS_FILE_NAME="users.xml";
     int idOfLoggedUser;
     vector <User> users;
     XMLFileWithUsers xmlFileWithUsers;
@@ -24,9 +23,9 @@ class UserManager
     bool doesLoginExist(string login);
 
 public:
-    UserManager() {
+    UserManager()
+    {
     idOfLoggedUser=0;
-    //users=xmlFileWithUsers.getAllUsers(nameOfXMLFileWithUsers);
     };
 
     User askDataOfNewUser();

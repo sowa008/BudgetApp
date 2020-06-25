@@ -19,6 +19,7 @@ public:
         static int convertStringToInt(string text);
         static string convertIntToString(int number);
         static string convertFloatToString(float number);
+        static float convertStringToFloat(string text);
         static char getCharacter();
         static string getLine();
         static string getUsersFileName();
