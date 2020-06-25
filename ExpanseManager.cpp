@@ -123,18 +123,8 @@ vector <MoneyRecord> ExpanseManager :: showTheExpansesOfThePreviousMonth()
     return vectorWithExpansesOfPreviousMonth;
 }
 
-vector <MoneyRecord> ExpanseManager :: showTheExpansesOfTheSelectedPeriod()
+vector <MoneyRecord> ExpanseManager :: showTheExpansesOfTheSelectedPeriod(int dateBegin, int dateEnd)
 {
-    cout << "From: ";
-    int dateBegin = DateManager :: validateDate();
-
-    cout << "To: ";
-    int dateEnd = DateManager :: validateDate();
-
-    cout << "Selected period: " << endl;
-    cout << "From: " << DateManager :: turnDateToStringWithHyphens(dateBegin) << endl;
-    cout << "To: " << DateManager :: turnDateToStringWithHyphens(dateEnd) << endl;
-
     XMLFileWithExpanses xmlFileWithExpanses(idOfTheLoggedUser, fileName);
     vector <MoneyRecord> vectorWithExpansesOfTheSelectedPeriod;
     expansesOfTheLoggedUser = xmlFileWithExpanses.getExpansesOfTheLoggedUser();

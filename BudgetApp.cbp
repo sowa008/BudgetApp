@@ -36,6 +36,10 @@
 		<Unit filename="AuxiliaryMethods.h" />
 		<Unit filename="DateManager.cpp" />
 		<Unit filename="DateManager.h" />
+		<Unit filename="ExpanseManager.cpp" />
+		<Unit filename="ExpanseManager.h" />
+		<Unit filename="IncomeManager.cpp" />
+		<Unit filename="IncomeManager.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="MoneyRecord.cpp" />

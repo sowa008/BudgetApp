@@ -21,7 +21,7 @@ public:
     int getIdOfTheLastIncome();
     vector <MoneyRecord> showTheIncomesOfTheCurrentMonth();
     vector <MoneyRecord> showTheIncomesOfThePreviousMonth();
-    vector <MoneyRecord> showTheIncomesOfTheSelectedPeriod();
+    vector <MoneyRecord> showTheIncomesOfTheSelectedPeriod(int dateBegin, int dateEnd);
 
 };
 

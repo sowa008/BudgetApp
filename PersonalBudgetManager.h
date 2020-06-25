@@ -24,6 +24,8 @@ class PersonalBudgetManager
     UserManager userManager;
     AuxiliaryMethods auxiliaryMethod;
 
+    HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
 public:
 
     PersonalBudgetManager()

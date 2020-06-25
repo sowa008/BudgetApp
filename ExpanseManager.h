@@ -21,7 +21,7 @@ public:
     int getIdOfTheLastExpanse();
     vector <MoneyRecord> showTheExpansesOfTheCurrentMonth();
     vector <MoneyRecord> showTheExpansesOfThePreviousMonth();
-    vector <MoneyRecord> showTheExpansesOfTheSelectedPeriod();
+    vector <MoneyRecord> showTheExpansesOfTheSelectedPeriod(int dateBegin, int dateEnd);
 
 };
 

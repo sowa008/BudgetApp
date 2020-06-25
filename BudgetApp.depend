@@ -56,15 +56,16 @@
 	<fstream>
 	<cstdlib>
 
-1593092048 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
+1593095431 source:c:\praca\programy\budgetapp\personalbudgetmanager.cpp
 	"PersonalBudgetManager.h"
 	"UserManager.h"
 	"IncomeManager.h"
 	"XMLFileWithIncomes.h"
 	"XMLFileWithExpanses.h"
 	<iomanip>
+	<windows.h>
 
-1593092244 c:\praca\programy\budgetapp\personalbudgetmanager.h
+1593095475 c:\praca\programy\budgetapp\personalbudgetmanager.h
 	"UserManager.h"
 	"IncomeManager.h"
 	"ExpanseManager.h"
@@ -97,12 +98,12 @@
 	<iostream>
 	<vector>
 
-1593090033 source:c:\praca\programy\budgetapp\incomemanager.cpp
+1593094916 source:c:\praca\programy\budgetapp\incomemanager.cpp
 	"DateManager.h"
 	"IncomeManager.h"
 	"XMLFileWithExpanses.h"
 
-1593089322 c:\praca\programy\budgetapp\incomemanager.h
+1593094916 c:\praca\programy\budgetapp\incomemanager.h
 	"MoneyRecordManager.h"
 	"MoneyRecord.h"
 	<iostream>
@@ -119,12 +120,12 @@
 1592850581 source:c:\praca\programy\budgetapp\moneyrecord.cpp
 	"MoneyRecord.h"
 
-1593091413 source:c:\praca\programy\budgetapp\expansemanager.cpp
+1593094916 source:c:\praca\programy\budgetapp\expansemanager.cpp
 	"DateManager.h"
 	"ExpanseManager.h"
 	"XMLFileWithExpanses.h"
 
-1593090547 c:\praca\programy\budgetapp\expansemanager.h
+1593094916 c:\praca\programy\budgetapp\expansemanager.h
 	"MoneyRecordManager.h"
 	"MoneyRecord.h"
 	<iostream>

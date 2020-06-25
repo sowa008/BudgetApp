@@ -5,7 +5,7 @@
 #include "XMLFileWithExpanses.h"
 
 #include <iomanip>
-
+#include <windows.h>
 
 void PersonalBudgetManager :: addIncome()
 {
@@ -113,9 +113,11 @@ void PersonalBudgetManager :: showTheBalanceOfTheCurrentMonth()
     cout << "Sum of your incomes from the current month: " << setprecision(2) << fixed << sumOfIncomes << endl;
     cout << "Sum of your expanses from the current month: " << setprecision(2) << fixed << sumOfExpanses << endl;
     cout << endl;
+    if (sumOfIncomes-sumOfExpanses>0) {SetConsoleTextAttribute(hConsole, 10);}
+    else {SetConsoleTextAttribute(hConsole, 12);}
     cout << "The balance of the current month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
-
+    SetConsoleTextAttribute(hConsole, 7);
     system("pause");
 }
 
@@ -139,25 +141,36 @@ void PersonalBudgetManager :: showTheBalanceOfThePreviousMonth()
     cout << "Sum of your incomes from the previous month: " << setprecision(2) << fixed << sumOfIncomes << endl;
     cout << "Sum of your expanses from the previous month: " << setprecision(2) << fixed << sumOfExpanses << endl;
     cout << endl;
+    if (sumOfIncomes-sumOfExpanses>0) {SetConsoleTextAttribute(hConsole, 10);}
+    else {SetConsoleTextAttribute(hConsole, 12);}
     cout << "The balance of the previous month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
+    SetConsoleTextAttribute(hConsole, 7);
 
     system("pause");
 }
 
 void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
 {
+    cout << "From: ";
+    int dateBegin = DateManager :: validateDate();
+
+    cout << "To: ";
+    int dateEnd = DateManager :: validateDate();
+
+    cout << "Selected period: " << endl;
+    cout << "From: " << DateManager :: turnDateToStringWithHyphens(dateBegin) << endl;
+    cout << "To: " << DateManager :: turnDateToStringWithHyphens(dateEnd) << endl;
+
     cout << endl;
     cout << "Incomes:" << endl;
 
-    //najpierw pyta o zakres dat, potem pokazuje wektor
-
-    vector <MoneyRecord> incomesOfTheSelectedPeriod = incomeManager->showTheIncomesOfTheSelectedPeriod();
+    vector <MoneyRecord> incomesOfTheSelectedPeriod = incomeManager->showTheIncomesOfTheSelectedPeriod(dateBegin, dateEnd);
     incomeManager->showVector(incomesOfTheSelectedPeriod);
 
     cout << endl;
     cout << "Expanses:" << endl;
-    vector <MoneyRecord> expansesOfTheSelectedPeriod = expanseManager->showTheExpansesOfTheSelectedPeriod();
+    vector <MoneyRecord> expansesOfTheSelectedPeriod = expanseManager->showTheExpansesOfTheSelectedPeriod(dateBegin, dateEnd);
     expanseManager->showVector(expansesOfTheSelectedPeriod);
 
     float sumOfIncomes = incomeManager->sumTheMoneyRecordsOfTheLoggedUser(incomesOfTheSelectedPeriod);
@@ -168,8 +181,11 @@ void PersonalBudgetManager :: showTheBalanceOfTheSelectedPeriod()
     cout << "Sum of your incomes from the selected period: " << setprecision(2) << fixed << sumOfIncomes << endl;
     cout << "Sum of your expanses from the selected period: " << setprecision(2) << fixed << sumOfExpanses << endl;
     cout << endl;
+    if (sumOfIncomes-sumOfExpanses>0) {SetConsoleTextAttribute(hConsole, 10);}
+    else {SetConsoleTextAttribute(hConsole, 12);}
     cout << "The balance of the previous month: " << setprecision(2) << fixed << sumOfIncomes-sumOfExpanses << endl;
     cout << endl;
+    SetConsoleTextAttribute(hConsole, 7);
 
     system("pause");
 }

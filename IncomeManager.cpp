@@ -123,18 +123,8 @@ vector <MoneyRecord> IncomeManager :: showTheIncomesOfThePreviousMonth()
     return vectorWithIncomesOfPreviousMonth;
 }
 
-vector <MoneyRecord> IncomeManager :: showTheIncomesOfTheSelectedPeriod()
+vector <MoneyRecord> IncomeManager :: showTheIncomesOfTheSelectedPeriod(int dateBegin, int dateEnd)
 {
-    cout << "From: ";
-    int dateBegin = DateManager :: validateDate();
-
-    cout << "To: ";
-    int dateEnd = DateManager :: validateDate();
-
-    cout << "Selected period: " << endl;
-    cout << "From: " << DateManager :: turnDateToStringWithHyphens(dateBegin) << endl;
-    cout << "To: " << DateManager :: turnDateToStringWithHyphens(dateEnd) << endl;
-
     XMLFileWithIncomes xmlFileWithIncomes(idOfTheLoggedUser, fileName);
     vector <MoneyRecord> vectorWithIncomesOfTheSelectedPeriod;
     incomesOfTheLoggedUser = xmlFileWithIncomes.getIncomesOfTheLoggedUser();
